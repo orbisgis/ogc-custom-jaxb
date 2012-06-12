@@ -1330,7 +1330,6 @@
       <xsd:extension base="se:FunctionType">
         <xsd:sequence>
           <xsd:element ref="se:LookupValue"/>
-          <xsd:element ref="se:FirstValue"/>
           <xsd:sequence minOccurs="0" maxOccurs="unbounded">
             <xsd:element ref="se:Threshold"/>
             <xsd:element ref="se:Value"/>
@@ -1344,7 +1343,7 @@
   </xsd:complexType>
   <xsd:element name="LookupValue" type="se:ParameterValueType"/>
   <xsd:element name="FirstValue" type="se:ParameterValueType"/>
-  <xsd:element name="Threshold" type="se:ParameterValueType"/>
+  <xsd:element name="Threshold" type="fes:LiteralType"/>
   <xsd:simpleType name="ThresholdBelongsToType">
     <xsd:restriction base="xsd:token">
       <xsd:enumeration value="succeeding"/>
