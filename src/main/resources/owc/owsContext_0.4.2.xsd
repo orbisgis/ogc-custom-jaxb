@@ -4,7 +4,7 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
 	xmlns:gml="http://www.opengis.net/gml"
 	xmlns:ows="http://www.opengis.net/ows/2.0" 
-	xmlns:fes="http://www.opengis.net/fes/2.0" 
+	xmlns:fes="http://www.opengis.net/fes/2.1" 
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:sld="http://www.opengis.net/sld/1.2" 
 	xmlns:se="http://www.opengis.net/se/2.0/core"
@@ -25,12 +25,15 @@
 	<!-- ==============================================================
 	     includes and imports
 	     ============================================================== -->
+        <!-- *** Custom stuff *** -->
+        <!-- Custom versions of all imported schemas -->
         <xs:import namespace="http://www.opengis.net/gml" schemaLocation="../gml/3.1.1/base/gml.xsd" />
-	<xs:import namespace="http://www.opengis.net/fes/2.0" schemaLocation="../filter/2.0/filter.xsd"/>
+	<xs:import namespace="http://www.opengis.net/fes/2.1" schemaLocation="../filter/2.1/filter.xsd"/>
 	<xs:import namespace="http://www.opengis.net/sld/1.2" schemaLocation="../sld/1.2/StyledLayerDescriptor.xsd"/>
 	<xs:import namespace="http://www.opengis.net/ows/2.0" schemaLocation="../ows/2.0/ows2forowscontext.xsd"/>
 	<xs:import namespace="http://www.opengis.net/se/2.0/core" schemaLocation="../se/2.0/Core.xsd"/>
 	<xs:import namespace="http://www.opengis.net/kml/2.2" schemaLocation="../kml/2.2.0/ogckml22.xsd" />
+        <!-- *** Custom stuff *** -->
 	<!-- ==============================================================
 	     elements and types
 	     ============================================================== -->

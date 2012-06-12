@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema targetNamespace="http://www.opengis.net/sld/1.2" xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:sld="http://www.opengis.net/sld/1.2" xmlns:se="http://www.opengis.net/se/2.0/core" xmlns:ows="http://www.opengis.net/ows/2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.2">
+<xsd:schema targetNamespace="http://www.opengis.net/sld/1.2" xmlns:wfs="http://www.opengis.net/wfs/2.1" xmlns:sld="http://www.opengis.net/sld/1.2" xmlns:se="http://www.opengis.net/se/2.0/core" xmlns:ows="http://www.opengis.net/ows/2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.2">
+        <!-- *** Changed stuff *** -->
+        <!-- Custom version of all imported schemas -->
 	<xsd:import namespace="http://www.opengis.net/se/2.0/core" schemaLocation="../../se/2.0/All.xsd"/>
-	<xsd:import namespace="http://www.opengis.net/wfs/2.0" schemaLocation="../../wfs/2.0/wfs.xsd"/>
+	<xsd:import namespace="http://www.opengis.net/wfs/2.1" schemaLocation="../../wfs/2.1/wfs.xsd"/>
 	<xsd:import namespace="http://www.opengis.net/ows/2.0" schemaLocation="../../ows/2.0/owsAll.xsd"/>
+        <!-- *** Changed stuff *** -->
 	<xsd:include schemaLocation="StyledLayerDescriptor.xsd"/>
 	<xsd:annotation>
 		<xsd:documentation>
@@ -29,7 +32,10 @@
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:complexType name="TypeNameType">
+                <!-- *** Changed stuff *** -->
+                <!-- se:DataTypeName is the new name of a data type name is SE 2.0 -->
                 <xsd:element ref="se:DataTypeName"/>
+                <!-- *** Changed stuff *** -->
 	</xsd:complexType>
 	<xsd:simpleType name="owsTypeType">
 		<xsd:restriction base="xsd:string">

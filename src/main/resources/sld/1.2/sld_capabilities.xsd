@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema targetNamespace="http://www.opengis.net/sld/1.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:wms="http://www.opengis.net/wms/1.4" xmlns:sld="http://www.opengis.net/sld/1.2" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.2">
-	
+        <!-- *** Changed stuff *** -->
+        <!-- Custom version of all imported schemas -->
 	<xsd:import namespace="http://www.opengis.net/wms/1.4" schemaLocation="../../wms/1.4.0/capabilities_1_4_0.xsd"/>
+        <!-- *** Changed stuff *** -->
 	<xsd:annotation>
 		<xsd:documentation>
 			<description>Styled Layer Descriptor version 1.1.0 (2010-02-01)</description>

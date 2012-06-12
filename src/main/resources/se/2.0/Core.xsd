@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema targetNamespace="http://www.opengis.net/se/2.0/core"
   xmlns:se="http://www.opengis.net/se/2.0/core" 
-  xmlns:fes="http://www.opengis.net/fes/2.0"
+  xmlns:fes="http://www.opengis.net/fes/2.1"
   xmlns:ows="http://www.opengis.net/ows/2.0"
   xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
   <xsd:import namespace="http://www.opengis.net/ows/2.0" schemaLocation="../../ows/2.0/owsAll.xsd" />
-  <xsd:import namespace="http://www.opengis.net/fes/2.0" schemaLocation="../../filter/2.0/filter.xsd" />
+  <xsd:import namespace="http://www.opengis.net/fes/2.1" schemaLocation="../../filter/2.1/filter.xsd" />
   <xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd"/>
 
 

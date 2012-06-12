@@ -2,12 +2,12 @@
 <xsd:schema targetNamespace="http://www.opengis.net/se/2.0/thematic"
   xmlns:tse="http://www.opengis.net/se/2.0/thematic"
   xmlns:se="http://www.opengis.net/se/2.0/core"
-  xmlns:fes="http://www.opengis.net/fes/2.0"
+  xmlns:fes="http://www.opengis.net/fes/2.1"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
 
   <!--<xsd:import namespaceschemaLocation="common.xsd" />-->
-  <xsd:import namespace="http://www.opengis.net/fes/2.0" schemaLocation="../../filter/2.0/filter.xsd"/>
+  <xsd:import namespace="http://www.opengis.net/fes/2.1" schemaLocation="../../filter/2.1/filter.xsd"/>
   <xsd:import namespace="http://www.opengis.net/se/2.0/core" schemaLocation="Core.xsd"/>
 
 

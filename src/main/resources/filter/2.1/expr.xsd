@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema
-   targetNamespace="http://www.opengis.net/fes/2.0"
-   xmlns:fes="http://www.opengis.net/fes/2.0"
+   targetNamespace="http://www.opengis.net/fes/2.1"
+   xmlns:fes="http://www.opengis.net/fes/2.1"
    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
    elementFormDefault="qualified"
    version="2.0.0">
@@ -38,6 +38,7 @@
       <xsd:attribute name="type" type="xsd:QName"/>
    </xsd:complexType>
    
+   <!-- *** Custom stuff *** -->
    <xsd:complexType name="expressionType" />
    
    <xsd:complexType name="ValueReferenceType" mixed="true">
@@ -49,6 +50,7 @@
          </xsd:extension>
       </xsd:complexContent>
    </xsd:complexType>
+   <!-- *** Custom stuff *** -->
 
 </xsd:schema>
 

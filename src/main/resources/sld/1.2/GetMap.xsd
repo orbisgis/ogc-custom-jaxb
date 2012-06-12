@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema targetNamespace="http://www.opengis.net/sld/1.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wms="http://www.opengis.net/wms/1.4" xmlns:ows="http://www.opengis.net/ows/2.0" xmlns:se="http://www.opengis.net/se/2.0/core" xmlns:ogc="http://www.opengis.net/fes/2.0" xmlns:sld="http://www.opengis.net/sld/1.2" elementFormDefault="qualified" version="1.2">
-	
-	<xsd:import namespace="http://www.opengis.net/fes/2.0" schemaLocation="../../filter/2.0/filter.xsd"/>
+<xsd:schema targetNamespace="http://www.opengis.net/sld/1.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wms="http://www.opengis.net/wms/1.4" xmlns:ows="http://www.opengis.net/ows/2.0" xmlns:se="http://www.opengis.net/se/2.0/core" xmlns:ogc="http://www.opengis.net/fes/2.1" xmlns:sld="http://www.opengis.net/sld/1.2" elementFormDefault="qualified" version="1.2">
+	<!-- *** Changed stuff *** -->
+        <!-- Custom version of all imported schemas -->
+	<xsd:import namespace="http://www.opengis.net/fes/2.1" schemaLocation="../../filter/2.1/filter.xsd"/>
 	<xsd:import namespace="http://www.opengis.net/se/2.0/core" schemaLocation="../../se/2.0/All.xsd"/>
 	<xsd:import namespace="http://www.opengis.net/wms/1.4" schemaLocation="../../wms/1.4.0/capabilities_1_4_0.xsd"/>
 	<xsd:import namespace="http://www.opengis.net/ows/2.0" schemaLocation="../../ows/2.0/owsAll.xsd"/>
+        <!-- *** Changed stuff *** -->
 	<xsd:include schemaLocation="StyledLayerDescriptor.xsd"/>
 	<xsd:annotation>
 		<xsd:documentation>
@@ -37,7 +39,10 @@
 					<xsd:sequence>
 						<xsd:element name="Width" type="xsd:positiveInteger"/>
 						<xsd:element name="Height" type="xsd:positiveInteger"/>
+                                                <!-- *** Custom stuff *** -->
+                                                <!-- new pixelSize parameter! -->
                                                 <xsd:element name="PixelSize" type="xsd:double" minOccurs="0" />
+                                                <!-- *** Custom stuff *** -->
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema targetNamespace="http://www.opengis.net/sld/1.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:se="http://www.opengis.net/se/2.0/core" xmlns:ogc="http://www.opengis.net/fes/2.0" xmlns:sld="http://www.opengis.net/sld/1.2" elementFormDefault="qualified" version="1.2">
-	
-	<xsd:import namespace="http://www.opengis.net/fes/2.0" schemaLocation="../../filter/2.0/filter.xsd"/>
+<xsd:schema targetNamespace="http://www.opengis.net/sld/1.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:se="http://www.opengis.net/se/2.0/core" xmlns:ogc="http://www.opengis.net/fes/2.1" xmlns:sld="http://www.opengis.net/sld/1.2" elementFormDefault="qualified" version="1.2">
+	<!-- *** Changed stuff *** -->
+        <!-- Custom version of all imported schemas -->
+	<xsd:import namespace="http://www.opengis.net/fes/2.1" schemaLocation="../../filter/2.1/filter.xsd"/>
 	<xsd:import namespace="http://www.opengis.net/se/2.0/core" schemaLocation="../../se/2.0/All.xsd"/>
+        <!-- *** Changed stuff *** -->
 	<!-- *********************************************************************** -->
 	<xsd:annotation>
 		<xsd:documentation>
@@ -74,7 +76,10 @@
 			<xsd:sequence>
 				<xsd:element ref="se:Name"/>
 				<xsd:element ref="se:Description" minOccurs="0"/>
+                                <!-- *** Changed stuff *** -->
+                                <!-- se:AbstractStyle is the new root element of a style in SE 2.0 -->
 				<xsd:element ref="se:AbstractStyle"/>
+                                <!-- *** Changed stuff *** -->
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -104,7 +109,10 @@
 				<xsd:element ref="se:Name" minOccurs="0"/>
 				<xsd:element ref="se:Description" minOccurs="0"/>
 				<xsd:element ref="sld:IsDefault" minOccurs="0"/>
+                                <!-- *** Changed stuff *** -->
+                                <!-- se:AbstractStyle is the new root element of a style in SE 2.0 -->
 				<xsd:element ref="se:AbstractStyle"/>
+                                <!-- *** Changed stuff *** -->
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jaxb:bindings version="1.0" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" 
-               xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-               xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" 
-               jaxb:extensionBindingPrefixes="xjc">
-                       
+<jaxb:bindings version="1.0" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+               xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" jaxb:extensionBindingPrefixes="xjc">
+        
+        <!-- Global bindings -->
         <jaxb:globalBindings
                 fixedAttributeAsConstantProperty="true"
                 typesafeEnumBase="xs:string"
@@ -13,6 +12,11 @@
                 <xjc:noValidatingUnmarshaller />
         </jaxb:globalBindings>             
 
+        <!-- Bindings for SE 2.0 -->
+        <!-- They depend on these local schemas:
+                - filter/2.1/filter.xsd
+                - ows/2.0/owsAll.xsd
+        -->
         <jaxb:bindings schemaLocation="se/2.0/Core.xsd" node="/xs:schema">
                 <jaxb:schemaBindings>
                         <jaxb:package name="net.opengis.se._2_0.core"/>
@@ -29,12 +33,29 @@
                 </jaxb:schemaBindings>
         </jaxb:bindings>
         
+        <!-- Bindings for OWC 0.4.2 -->
+        <!-- They depend on these local schemas:
+                - filter/2.1/filter.xsd
+                - ows/2.0/owsAll.xsd
+                - gml/3.1.1/base/gml.xsd
+                - se/2.0/Core.xsd
+                - sld/1.2/StyledLayerDescriptor.xsd
+                - kml/2.2.0/ogckml22.xsd
+        -->
         <jaxb:bindings schemaLocation="owc/owsContext_0.4.2.xsd" node="/xs:schema">
                 <jaxb:schemaBindings>
                         <jaxb:package name="net.opengis.ows_context"/>
                 </jaxb:schemaBindings>
         </jaxb:bindings>
         
+        <!-- Bindings for SLD 1.2 -->
+        <!-- They depend on these local schemas:
+                - filter/2.1/filter.xsd
+                - ows/2.0/owsAll.xsd
+                - se/2.0/All.xsd
+                - wms/1.4.0/capabilities_1_4_0.xsd
+                - wfs/2.0/wfs.xsd
+        -->
         <jaxb:bindings schemaLocation="sld/1.2/DescribeLayer.xsd" node="/xs:schema">
 
                 <jaxb:schemaBindings>
@@ -45,6 +66,8 @@
                 </jaxb:schemaBindings>
         </jaxb:bindings>
         
+        <!-- Bindings for WMS 1.4.0 -->
+        <!-- Depends on no local schema -->
         <jaxb:bindings schemaLocation="wms/1.4.0/capabilities_1_4_0.xsd" 
                        node="/xs:schema">
                 <jaxb:schemaBindings>
@@ -54,6 +77,7 @@
                         <xjc:dom/>
                 </jaxb:bindings>
         </jaxb:bindings>
+        
         <jaxb:bindings schemaLocation="wms/1.4.0/exceptions_1_4_0.xsd" 
                        node="/xs:schema">
                 <jaxb:schemaBindings>
@@ -61,33 +85,11 @@
                 </jaxb:schemaBindings>
         </jaxb:bindings>
         
-        <jaxb:bindings schemaLocation="gml/3.1.1/base/geometryBasic0d1d.xsd " 
-               node="/xs:schema">
-		<!--jaxb:bindings node="xs:attributeGroup[@name='SRSInformationGroup']">
-				<inheritance:implements>net.opengis.gml.v_3_1_1.SRSInformationGroup</inheritance:implements>
-		</jaxb:bindings>
-		<jaxb:bindings node="xs:attributeGroup[@name='SRSReferenceGroup']">
-				<inheritance:implements>net.opengis.gml.v_3_1_1.SRSReferenceGroup</inheritance:implements>
-		</jaxb:bindings-->
-<!--                <jaxb:bindings node="xs:complexType[@name='AbstractGeometryType']">
-                        <inheritance:implements>net.opengis.gml.v_3_1_1.SRSReferenceGroup</inheritance:implements>
-                </jaxb:bindings>
-                <jaxb:bindings node="xs:complexType[@name='DirectPositionType']">
-                        <inheritance:implements>net.opengis.gml.v_3_1_1.SRSReferenceGroup</inheritance:implements>
-                </jaxb:bindings>
-                <jaxb:bindings node="xs:complexType[@name='DirectPositionListType']">
-                        <inheritance:implements>net.opengis.gml.v_3_1_1.SRSReferenceGroup</inheritance:implements>
-                </jaxb:bindings>
-                <jaxb:bindings node="xs:complexType[@name='VectorType']">
-                        <inheritance:implements>net.opengis.gml.v_3_1_1.SRSReferenceGroup</inheritance:implements>
-                </jaxb:bindings>
-                <jaxb:bindings node="xs:complexType[@name='EnvelopeType']">
-                        <inheritance:implements>net.opengis.gml.v_3_1_1.SRSReferenceGroup</inheritance:implements>
-                </jaxb:bindings>-->
-        </jaxb:bindings>
-
-
-
+        <!-- Bindings for GML 3.1.1 -->
+        <!-- These are the minimum bindings to let jaxb process the schemas
+             They are not necessarily the best or the easier to use
+        -->
+        <!-- Depends on no local schema -->
         <jaxb:bindings schemaLocation="gml/3.1.1/base/gmlBase.xsd" 
                        node="/xs:schema">
                 <jaxb:bindings node="xs:element[@name='_Object']">
@@ -163,55 +165,37 @@
                 </jaxb:bindings>
         </jaxb:bindings>
 
-
-<!--        <jaxb:bindings 
-                schemaLocation="gml/3.1.1/base/feature.xsd" 
-                node="/xs:schema">
-                <jaxb:bindings node="xs:element[@name='_FeatureCollection']">
-                        <jaxb:class name="AFeatureCollectionElement"/>
-                </jaxb:bindings>
-        </jaxb:bindings>-->
-
-        <jaxb:bindings 
-                schemaLocation="gml/3.1.1/smil/smil20.xsd" 
-                node="/xs:schema">
+        <!-- Bindings for KML 2.2.0 -->
+        <!-- Depends on no local schema ; this is the exact same schema from OGC, just the bindings are custom -->
+        <!-- NOTE: we probably could apply the bindings without locally having the schema... -->
+        <jaxb:bindings schemaLocation="kml/2.2.0/ogckml22.xsd" node="/xs:schema">
                 <jaxb:schemaBindings>
-                        <jaxb:package name="org.w3.smil.v_2_0"/>
+                        <jaxb:package name="net.opengis.kml._2_2_0"/>
                 </jaxb:schemaBindings>
-                <jaxb:bindings node="xs:attributeGroup[@name='structureModuleAttrs']/xs:attribute[@name='class']">
-                        <jaxb:property name="ClassName"/>
+                <jaxb:bindings node="xs:element[@name='Scale']">
+                        <jaxb:class name="AScale"/>
                 </jaxb:bindings>
-
+                <jaxb:bindings node="xs:element[@name='snippet']">
+                        <jaxb:class name="ASnippet"/>
+                </jaxb:bindings>
         </jaxb:bindings>
-
-        <jaxb:bindings 
-                schemaLocation="gml/3.1.1/smil/smil20-language.xsd" 
-                node="/xs:schema">
+        <jaxb:bindings schemaLocation="kml/2.2.0/atom-author-link.xsd" node="/xs:schema">
                 <jaxb:schemaBindings>
-                        <jaxb:package name="org.w3.smil.v_2_0.language"/>
+                        <jaxb:package name="net.opengis.kml._2_2_0"/>
                 </jaxb:schemaBindings>
-
+                <jaxb:bindings node="xs:element[@name='name']">
+                        <jaxb:class name="AtomName"/>
+                </jaxb:bindings>
         </jaxb:bindings>
         
-        <jaxb:bindings schemaLocation="kml/2.2.0/ogckml22.xsd" 
-		node="/xs:schema">
-		<jaxb:schemaBindings>
-			<jaxb:package name="net.opengis.kml.v_2_2_0"/>
-		</jaxb:schemaBindings>
-		<jaxb:bindings node="xs:element[@name='Scale']">
-			<jaxb:class name="AScale"/>
-		</jaxb:bindings>
-		<jaxb:bindings node="xs:element[@name='snippet']">
-			<jaxb:class name="ASnippet"/>
-		</jaxb:bindings>
-	</jaxb:bindings>
-	<jaxb:bindings schemaLocation="kml/2.2.0/atom-author-link.xsd" 
-		node="/xs:schema">
-		<jaxb:schemaBindings>
-			<jaxb:package name="net.opengis.kml.v_2_2_0"/>
-		</jaxb:schemaBindings>
-		<jaxb:bindings node="xs:element[@name='name']">
-			<jaxb:class name="AtomName"/>
-		</jaxb:bindings>
-	</jaxb:bindings>
+        <!-- Bindings for WFS 2.1 -->
+        <!-- They depend on these local schemas:
+                - filter/2.1/filter.xsd
+                - ows/2.0/owsAll.xsd
+        -->
+        <jaxb:bindings schemaLocation="wfs/2.1/wfs.xsd" node="/xs:schema">
+                <jaxb:schemaBindings>
+                        <jaxb:package name="net.opengis.wfs._2_1"/>
+                </jaxb:schemaBindings>
+        </jaxb:bindings>
 </jaxb:bindings>

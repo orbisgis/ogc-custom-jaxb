@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema
-   targetNamespace="http://www.opengis.net/fes/2.0"
-   xmlns:fes="http://www.opengis.net/fes/2.0"
+   targetNamespace="http://www.opengis.net/fes/2.1"
+   xmlns:fes="http://www.opengis.net/fes/2.1"
    xmlns:ows="http://www.opengis.net/ows/2.0"
    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
    xmlns:xml="http://www.w3.org/XML/1998/namespace"
@@ -21,13 +21,11 @@
    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"
                schemaLocation="http://www.w3.org/2001/xml.xsd"/>
 
-	<!-- UPDATE to play with 2.0 -->
-   <xsd:import namespace="http://www.opengis.net/ows/2.0"
-               schemaLocation="../../ows/2.0/owsAll.xsd"/>
-               
-   <!--<xsd:import namespace="http://www.opengis.net/ows/1.1"
-               schemaLocation="../../ows/1.1.0/owsAll.xsd"/>-->
-
+   <!-- *** Changed stuff *** -->
+   <!-- This replaces an import for OWS 1.1 -->
+   <xsd:import namespace="http://www.opengis.net/ows/2.0" schemaLocation="../../ows/2.0/owsAll.xsd"/>
+   <!-- *** Changed stuff *** -->
+   
    <xsd:element name="Filter_Capabilities">
       <xsd:complexType>
          <xsd:sequence>

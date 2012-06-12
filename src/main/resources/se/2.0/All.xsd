@@ -3,7 +3,7 @@
   xmlns:se="http://www.opengis.net/se/2.0/core"
   xmlns:rse="http://www.opengis.net/se/2.0/raster"
   xmlns:tse="http://www.opengis.net/se/2.0/thematic"
-  xmlns:fes="http://www.opengis.net/fes/2.0"
+  xmlns:fes="http://www.opengis.net/fes/2.1"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
   <!-- Import CORE -->
