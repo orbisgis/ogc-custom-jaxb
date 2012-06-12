@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.opengis.net/se/2.0/raster"
+  xmlns:rse="http://www.opengis.net/se/2.0/raster"
+  xmlns:se="http://www.opengis.net/se/2.0/core"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xsd:import namespace="http://www.opengis.net/se/2.0/core" schemaLocation="Core.xsd" />
+
+  <!-- ********************************************************************* -->
+  <xsd:annotation>
+    <xsd:documentation>RASTER Symbolizer</xsd:documentation>
+  </xsd:annotation>
+  <xsd:element name="RasterSymbolizer" type="rse:RasterSymbolizerType" substitutionGroup="se:Symbolizer">
+    <xsd:annotation>
+      <xsd:documentation>A "RasterSymbolizer" is used to specify the rendering of raster/matrix-coverage data (e.g., satellite images, DEMs).</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="RasterSymbolizerType">
+    <xsd:complexContent>
+      <xsd:extension base="se:SymbolizerType">
+        <xsd:sequence>
+          <xsd:element ref="se:Geometry" minOccurs="0"/>
+          <xsd:element ref="se:Opacity" minOccurs="0"/>
+          <xsd:element ref="rse:ChannelSelection" minOccurs="0"/>
+          <xsd:element ref="rse:OverlapBehavior" minOccurs="0"/>
+          <xsd:element ref="rse:ColorMap" minOccurs="0"/>
+          <xsd:element ref="rse:ContrastEnhancement" minOccurs="0"/>
+          <xsd:element ref="rse:ShadedRelief" minOccurs="0"/>
+          <xsd:element ref="rse:ImageOutline" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="uom" type="se:UomType" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ChannelSelection" type="rse:ChannelSelectionType">
+    <xsd:annotation>
+      <xsd:documentation>"ChannelSelection" specifies the false-color channel selection for a multi-spectral raster source.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ChannelSelectionType">
+    <xsd:choice>
+      <xsd:sequence>
+        <xsd:element ref="rse:RedChannel"/>
+        <xsd:element ref="rse:GreenChannel"/>
+        <xsd:element ref="rse:BlueChannel"/>
+      </xsd:sequence>
+      <xsd:element ref="rse:GrayChannel"/>
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:element name="RedChannel" type="rse:SelectedChannelType"/>
+  <xsd:element name="GreenChannel" type="rse:SelectedChannelType"/>
+  <xsd:element name="BlueChannel" type="rse:SelectedChannelType"/>
+  <xsd:element name="GrayChannel" type="rse:SelectedChannelType"/>
+  <xsd:complexType name="SelectedChannelType">
+    <xsd:sequence>
+      <xsd:element ref="rse:SourceChannelName"/>
+      <xsd:element ref="rse:ContrastEnhancement" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="SourceChannelName" type="xsd:string"/>
+  <xsd:element name="OverlapBehavior">
+    <xsd:annotation>
+      <xsd:documentation>"OverlapBehavior" tells a system how to behave when multiple raster images in a layer overlap each other, for example with satellite-image scenes.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleType>
+      <xsd:restriction base="xsd:string">
+        <xsd:enumeration value="LATEST_ON_TOP"/>
+        <xsd:enumeration value="EARLIEST_ON_TOP"/>
+        <xsd:enumeration value="AVERAGE"/>
+        <xsd:enumeration value="RANDOM"/>
+      </xsd:restriction>
+    </xsd:simpleType>
+  </xsd:element>
+  <xsd:element name="ColorMap" type="rse:ColorMapType">
+    <xsd:annotation>
+      <xsd:documentation>A "ColorMap" defines either the colors of a pallette-type raster source or the mapping of numeric pixel values to colors.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ColorMapType">
+    <xsd:choice>
+      <xsd:element ref="se:Categorize"/>
+      <xsd:element ref="se:Interpolate"/>
+    </xsd:choice>
+  </xsd:complexType>
+  <xsd:element name="ContrastEnhancement" type="rse:ContrastEnhancementType">
+    <xsd:annotation>
+      <xsd:documentation>"ContrastEnhancement" defines the 'stretching' of contrast for a channel of a false-color image or for a whole grey/color image.  Contrast enhancement is used to make ground features in images more visible.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ContrastEnhancementType">
+    <xsd:sequence>
+      <xsd:choice minOccurs="0">
+        <xsd:element ref="rse:Normalize"/>
+        <xsd:element ref="rse:Histogram"/>
+      </xsd:choice>
+      <xsd:element ref="rse:GammaValue" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Normalize" type="rse:NormalizeType"/>
+  <xsd:complexType name="NormalizeType"/>
+  <xsd:element name="Histogram" type="rse:HistogramType"/>
+  <xsd:complexType name="HistogramType"/>
+  <xsd:element name="GammaValue" type="xsd:double"/>
+  <xsd:element name="ShadedRelief" type="rse:ShadedReliefType">
+    <xsd:annotation>
+      <xsd:documentation>"ShadedRelief" specifies the application of relief shading (or "hill shading") to a DEM raster to give it somewhat of a three-dimensional effect and to make elevation changes more visible.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ShadedReliefType">
+    <xsd:sequence>
+      <xsd:element ref="rse:BrightnessOnly" minOccurs="0"/>
+      <xsd:element ref="rse:ReliefFactor" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="BrightnessOnly" type="xsd:boolean"/>
+  <xsd:element name="ReliefFactor" type="xsd:double"/>
+  <xsd:element name="ImageOutline" type="rse:ImageOutlineType">
+    <xsd:annotation>
+      <xsd:documentation>"ImageOutline" specifies how individual source rasters in a multi-raster set (such as a set of satellite-image scenes) should be outlined to make the individual-image locations visible.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="ImageOutlineType">
+    <xsd:choice>
+      <xsd:element ref="se:LineSymbolizer"/>
+      <xsd:element ref="se:AreaSymbolizer" />
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:schema>

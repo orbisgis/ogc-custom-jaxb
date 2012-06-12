@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="0.1.0" targetNamespace="http://www.opengis.net/ows" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:annotation>
+		<xs:appinfo>ows2forowscontext.xsd 2011/11/16</xs:appinfo>
+		<xs:documentation>
+		This XML Schema is a convenience for importing OWS 2.0 schema files.  
+		Primary editor: Raj Singh.  
+		Additionnal edits : Olivier Ertz (use of OWS 2.0 for OWC 0.4.2)
+		Copyright (c) 2008 OpenGIS, All Rights Reserved.</xs:documentation>
+	</xs:annotation>
+	
+	<xs:include schemaLocation="./owsCommon.xsd"/>
+	<xs:include schemaLocation="./owsServiceProvider.xsd"/>
+	<xs:include schemaLocation="./owsDataIdentification.xsd"/>
+	<xs:include schemaLocation="./ows19115subset.xsd"/>
+</xs:schema>

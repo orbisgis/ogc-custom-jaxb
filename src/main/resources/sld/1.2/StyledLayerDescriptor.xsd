@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.opengis.net/sld" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:se="http://www.opengis.net/se/2.0/core" xmlns:ogc="http://www.opengis.net/fes/2.0" xmlns:sld="http://www.opengis.net/sld" elementFormDefault="qualified" version="1.2">
+	
+<!--	<xsd:import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/feature.xsd"/>-->
+	<xsd:import namespace="http://www.opengis.net/fes/2.0" schemaLocation="../../filter/2.0/filter.xsd"/>
+	<xsd:import namespace="http://www.opengis.net/se/2.0/core" schemaLocation="../../se/2.0/All.xsd"/>
+	<!-- *********************************************************************** -->
+	<xsd:annotation>
+		<xsd:documentation>
+      		<description>Styled Layer Descriptor version 1.2</description>
+			<copyright>
+				SLD is an OGC Standard.
+				Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+				To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
+			</copyright>
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="StyledLayerDescriptor">
+		<xsd:annotation>
+			<xsd:documentation>
+        A StyledLayerDescriptor is a sequence of styled layers, represented
+        at the first level by NamedLayer elements.
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="se:Name" minOccurs="0"/>
+				<xsd:element ref="se:Description" minOccurs="0"/>
+				<xsd:element ref="sld:UseSLDLibrary" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:choice minOccurs="0" maxOccurs="unbounded">
+					<xsd:element ref="sld:NamedLayer"/>
+				</xsd:choice>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="se:VersionType" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- *********************************************************************** -->
+	<xsd:annotation>
+		<xsd:documentation>
+      SLD LIBRARIES
+    </xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="UseSLDLibrary">
+		<xsd:annotation>
+			<xsd:documentation>
+        The UseSLDLibrary tag specifies that an external SLD document
+        should be used as a "library" of named layers and styles to
+        augment the set of named layers and styles that are available
+        for use inside of a WMS.  In the event of name collisions, the
+        SLD library takes precedence over the ones internal to the WMS.
+        Any number of libraries may be specified in an SLD and each
+        successive library takes precedence over the former ones in the
+        case of name collisions.
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="se:OnlineResource"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- *********************************************************************** -->
+	<xsd:annotation>
+		<xsd:documentation>
+      LAYERS AND STYLES
+    </xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="NamedLayer">
+		<xsd:annotation>
+			<xsd:documentation>
+        A NamedLayer is a layer of data that has a name advertised by a WMS.
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="se:Name"/>
+				<xsd:element ref="se:Description" minOccurs="0"/>
+				<xsd:element ref="se:AbstractStyle"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="NamedStyle">
+		<xsd:annotation>
+			<xsd:documentation>
+        A NamedStyle is used to refer to a style that has a name in a WMS.
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="se:Name"/>
+				<xsd:element ref="se:Description" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="UserStyle">
+		<xsd:annotation>
+			<xsd:documentation>
+        A UserStyle allows user-defined styling and is semantically
+        equivalent to a WMS named style. External FeatureTypeStyles or
+        CoverageStyles can be linked using an OnlineResource-element
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="se:Name" minOccurs="0"/>
+				<xsd:element ref="se:Description" minOccurs="0"/>
+				<xsd:element ref="sld:IsDefault" minOccurs="0"/>
+				<xsd:element ref="se:AbstractStyle"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="IsDefault" type="xsd:boolean"/>
+</xsd:schema>

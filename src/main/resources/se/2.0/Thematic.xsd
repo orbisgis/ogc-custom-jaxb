@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.opengis.net/se/2.0/thematic"
+  xmlns:tse="http://www.opengis.net/se/2.0/thematic"
+  xmlns:se="http://www.opengis.net/se/2.0/core"
+  xmlns:fes="http://www.opengis.net/fes/2.0"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+
+  <!--<xsd:import namespaceschemaLocation="common.xsd" />-->
+  <xsd:import namespace="http://www.opengis.net/fes/2.0" schemaLocation="../../filter/2.0/filter.xsd"/>
+  <xsd:import namespace="http://www.opengis.net/se/2.0/core" schemaLocation="Core.xsd"/>
+
+
+<!--
+   <xsd:element name="Sqrt" type="tse:UnaryOperatorType"
+      substitutionGroup="fes:expression"/>
+   <xsd:element name="Log" type="tse:UnaryOperatorType"
+      substitutionGroup="fes:expression"/>
+   <xsd:element name="Ln" type="tse:UnaryOperatorType"
+      substitutionGroup="fes:expression"/>
+
+   <xsd:complexType name="UnaryOperatorType">
+     <xsd:sequence>
+       <xsd:element ref="fes:expression"/>
+     </xsd:sequence>
+   </xsd:complexType>
+-->
+
+  <!-- DensityFill -->
+  <xsd:element name="DensityFill" type="tse:DensityFillType"
+      substitutionGroup="se:Fill">
+    <xsd:annotation>
+      <xsd:documentation>A "DensityFill" specifies either hatches (PenStroke) or marks (Graphic) that are repeated whithin the area in order to cover a pre-defined percentage of the area</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="DensityFillType">
+    <xsd:complexContent>
+      <xsd:extension base="se:FillType">
+        <xsd:sequence>
+          <xsd:choice>
+            <xsd:sequence>
+              <xsd:element ref="se:PenStroke" />
+              <xsd:element ref="tse:Orientation" minOccurs="0"/>
+            </xsd:sequence>
+            <xsd:element ref="se:Graphic" />
+          </xsd:choice>
+          <xsd:element ref="tse:Percentage" />
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="Percentage" type="se:ParameterValueType">
+    <xsd:annotation>
+      <xsd:documentation>Percentage of hatched/marked area [0;100]</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="Orientation" type="se:ParameterValueType">
+    <xsd:annotation>
+      <xsd:documentation>Clockwise orientation [0;360], default is -45.0</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+
+  <!-- DotMapFill -->
+  <xsd:element name="DotMapFill" type="tse:DotMapFillType"
+      substitutionGroup="se:Fill">
+    <xsd:annotation>
+      <xsd:documentation>A "DotMapFill" is used to repeat a computed number (= ValToRepresent/ValuePerMark)of mark within the area</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="DotMapFillType">
+    <xsd:complexContent>
+      <xsd:extension base="se:FillType">
+        <xsd:sequence>
+          <xsd:element ref="se:Graphic"/>
+          <xsd:element ref="tse:ValuePerMark"/>
+          <xsd:element ref="tse:ValueToRepresent"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="ValuePerMark" type="se:ParameterValueType">
+    <xsd:annotation>
+      <xsd:documentation>Specifies how many a single mark represent</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="ValueToRepresent" type="se:ParameterValueType">
+    <xsd:annotation>
+      <xsd:documentation>Specifies the total to represent. The number of mark to represent equals (int)(ValueToRepresent/ValuePerMark)</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+
+
+  <!-- PieChart -->
+  <xsd:element name="PieChart" type="tse:PieChartType"
+    substitutionGroup="se:Graphic">
+    <xsd:annotation>
+      <xsd:documentation>A "PieChart" define a pie chart based on features attribute.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="PieChartType">
+    <xsd:complexContent>
+      <xsd:extension base="se:GraphicType">
+        <xsd:sequence>
+          <xsd:element ref="se:Transform" minOccurs="0"/>
+          <xsd:element ref="se:Radius" minOccurs="0"/>
+          <xsd:element ref="tse:HoleRadius" minOccurs="0"/>
+          <xsd:element ref="se:Stroke" minOccurs="0"/>
+          <xsd:element ref="tse:Slice" minOccurs="1" maxOccurs="unbounded" />
+          <xsd:element ref="tse:PieSubtype" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="uom" type="se:UomType" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="HoleRadius" type="se:ParameterValueType"/>
+
+  <xsd:element name="PieSubtype" type="tse:PieSubtypeType" />
+  <xsd:simpleType name="PieSubtypeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="whole"/>
+      <xsd:enumeration value="half"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <xsd:element name="Slice" type="tse:SliceType" />
+  <xsd:complexType name="SliceType">
+    <xsd:sequence>
+        <xsd:element ref="se:Name" />
+        <xsd:element ref="se:Value" />
+        <xsd:element ref="se:Fill" />
+        <xsd:element ref="tse:Gap" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="Gap" type="se:ParameterValueType"/>
+
+  <!-- AxisChart -->
+  <xsd:element name="AxisChart" type="tse:AxisChartType"
+    substitutionGroup="se:Graphic">
+    <xsd:annotation>
+      <xsd:documentation>A "AxisChart" can be used for various chart type: barchart, linechart, areachart, stackedbarchart and polar chart</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="AxisChartType">
+    <xsd:complexContent>
+      <xsd:extension base="se:GraphicType">
+        <xsd:sequence>
+          <xsd:element ref="se:Transform" minOccurs="0"/>
+          <xsd:element ref="tse:Normalization" minOccurs="0" />
+	  <xsd:element ref="tse:AxisChartSubtype" minOccurs="0" />
+          <xsd:element ref="tse:CategoryWidth" minOccurs="1"/>
+          <xsd:element ref="tse:CategoryGap" minOccurs="0"/>
+          <xsd:element ref="tse:AxisScale" />
+          <xsd:element ref="se:Fill" minOccurs="0">
+            <xsd:annotation>
+                <xsd:documentation>if defined, fill area defined by all categories</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element ref="se:Stroke" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>if defined, draw a line between each category</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+	  <xsd:element ref="tse:Category" minOccurs="1" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="uom" type="se:UomType" />
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="AxisChartSubtype" type="tse:AxisChartSubtypeType" />
+  <xsd:simpleType name="AxisChartSubtypeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="ortho"/>
+      <xsd:enumeration value="polar"/>
+      <xsd:enumeration value="stacked"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:element name="Normalization" type="se:ParameterValueType" />
+
+  <xsd:element name="AxisScale" type="tse:AxisScaleType" />
+  <xsd:complexType name="AxisScaleType">
+    <xsd:sequence>
+        <xsd:element ref="tse:AxisLength" />
+        <xsd:element ref="se:Value" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:element name="AxisLength" type="se:ParameterValueType" />
+
+  <xsd:element name="CategoryWidth" type="se:ParameterValueType" />
+  <xsd:element name="CategoryGap" type="se:ParameterValueType" />
+ 
+  <xsd:element name="Category" type="tse:CategoryType" />
+  <xsd:complexType name="CategoryType">
+  	<xsd:sequence>
+		<xsd:element ref="se:Name" />
+		<xsd:element ref="se:Value" />
+		<xsd:element ref="se:Fill" minOccurs="0">
+       		<xsd:annotation>
+             <xsd:documentation>if defined, fill a bar</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element ref="se:Stroke" minOccurs="0">
+       		<xsd:annotation>
+               <xsd:documentation>if defined, outline the bar</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+		<xsd:element ref="se:Graphic" minOccurs="0">
+       		<xsd:annotation>
+		      <xsd:documentation>if defined, plot the graphic over the point</xsd:documentation>
+			</xsd:annotation>
+		</xsd:element>
+	</xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
