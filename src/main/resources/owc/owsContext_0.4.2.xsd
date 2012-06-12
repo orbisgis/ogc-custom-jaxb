@@ -270,7 +270,7 @@
 						</xs:annotation>
 					</xs:element>
 					<!-- needed for inline KML -->
-				<!--	<xs:element ref="kml:Document" minOccurs="0" maxOccurs="unbounded"/>
+                                        <xs:element ref="kml:Document" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="VendorExtension" type="owc:ExtensionType" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>The Extension element is a container tag in which arbitrary
@@ -281,7 +281,7 @@
 								be expected to be preserved in transfers of Context documents between
 								different systems.</xs:documentation>
 						</xs:annotation>
-					</xs:element> -->
+					</xs:element>
 					<xs:element name="StyleList" type="owc:StyleListType" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation>The parent element containing the list of available
@@ -438,7 +438,7 @@
 			<xs:enumeration value="urn:ogc:serviceType:GML"/>
 			<xs:enumeration value="urn:ogc:serviceType:SLD"/>
 			<xs:enumeration value="urn:ogc:serviceType:FES"/>
-		<!--	<xs:enumeration value="urn:ogc:serviceType:KML"/> -->
+			<xs:enumeration value="urn:ogc:serviceType:KML"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:complexType name="FormatListType">
