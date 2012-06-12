@@ -37,6 +37,18 @@
       </xsd:sequence>
       <xsd:attribute name="type" type="xsd:QName"/>
    </xsd:complexType>
+   
+   <xsd:complexType name="expressionType" />
+   
+   <xsd:complexType name="ValueReferenceType" mixed="true">
+      <xsd:complexContent>
+         <xsd:extension base="fes:expressionType">
+            <xsd:sequence>
+               <xsd:any minOccurs="0"/>
+            </xsd:sequence> 
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
 
 </xsd:schema>
 
