@@ -30,7 +30,7 @@
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:complexType name="TypeNameType">
-                <xsd:element ref="se:Name"/>
+                <xsd:element ref="se:DataTypeName"/>
 	</xsd:complexType>
 	<xsd:simpleType name="owsTypeType">
 		<xsd:restriction base="xsd:string">

@@ -38,6 +38,7 @@
 					<xsd:sequence>
 						<xsd:element name="Width" type="xsd:positiveInteger"/>
 						<xsd:element name="Height" type="xsd:positiveInteger"/>
+                                                <xsd:element name="PixelSize" type="xsd:double" minOccurs="0" />
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
