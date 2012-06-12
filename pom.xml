@@ -27,7 +27,6 @@
                                         <schemaIncludes>
                                                 <value>se/*/All.xsd</value>
                                                 <value>sld/*/*.xsd</value>
-                                                <value>wms/*/*.xsd</value>
                                                 <value>filter/*/filter.xsd</value>
                                                 <value>ows/*/owsAll.xsd</value>
                                                 <value>owc/*.xsd</value>

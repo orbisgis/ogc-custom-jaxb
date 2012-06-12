@@ -53,7 +53,6 @@
                 - filter/2.1/filter.xsd
                 - ows/2.0/owsAll.xsd
                 - se/2.0/All.xsd
-                - wms/1.4.0/capabilities_1_4_0.xsd
                 - wfs/2.0/wfs.xsd
         -->
         <jaxb:bindings schemaLocation="sld/1.2/DescribeLayer.xsd" node="/xs:schema">
@@ -63,25 +62,6 @@
                         <jaxb:nameXmlTransform>
                                 <jaxb:elementName suffix="Element"/>
                         </jaxb:nameXmlTransform>
-                </jaxb:schemaBindings>
-        </jaxb:bindings>
-        
-        <!-- Bindings for WMS 1.4.0 -->
-        <!-- Depends on no local schema -->
-        <jaxb:bindings schemaLocation="wms/1.4.0/capabilities_1_4_0.xsd" 
-                       node="/xs:schema">
-                <jaxb:schemaBindings>
-                        <jaxb:package name="net.opengis.wms._1_4_0"/>
-                </jaxb:schemaBindings>
-                <jaxb:bindings node="xs:element[@name='_ExtendedCapabilities']">
-                        <xjc:dom/>
-                </jaxb:bindings>
-        </jaxb:bindings>
-        
-        <jaxb:bindings schemaLocation="wms/1.4.0/exceptions_1_4_0.xsd" 
-                       node="/xs:schema">
-                <jaxb:schemaBindings>
-                        <jaxb:package name="net.opengis.wms._1_4_0"/>
                 </jaxb:schemaBindings>
         </jaxb:bindings>
         
