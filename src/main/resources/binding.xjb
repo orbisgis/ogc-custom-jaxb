@@ -13,10 +13,19 @@
                 <xjc:noValidatingUnmarshaller />
         </jaxb:globalBindings>             
 
-        <jaxb:bindings schemaLocation="se/2.0/All.xsd" node="/xs:schema">
-
+        <jaxb:bindings schemaLocation="se/2.0/Core.xsd" node="/xs:schema">
                 <jaxb:schemaBindings>
-                        <jaxb:package name="net.opengis.se._2_0"/>
+                        <jaxb:package name="net.opengis.se._2_0.core"/>
+                </jaxb:schemaBindings>
+        </jaxb:bindings>
+        <jaxb:bindings schemaLocation="se/2.0/Raster.xsd" node="/xs:schema">
+                <jaxb:schemaBindings>
+                        <jaxb:package name="net.opengis.se._2_0.raster"/>
+                </jaxb:schemaBindings>
+        </jaxb:bindings>
+        <jaxb:bindings schemaLocation="se/2.0/Thematic.xsd" node="/xs:schema">
+                <jaxb:schemaBindings>
+                        <jaxb:package name="net.opengis.se._2_0.thematic"/>
                 </jaxb:schemaBindings>
         </jaxb:bindings>
         
