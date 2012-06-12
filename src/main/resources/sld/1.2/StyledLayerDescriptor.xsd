@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema targetNamespace="http://www.opengis.net/sld" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:se="http://www.opengis.net/se/2.0/core" xmlns:ogc="http://www.opengis.net/fes/2.0" xmlns:sld="http://www.opengis.net/sld" elementFormDefault="qualified" version="1.2">
+<xsd:schema targetNamespace="http://www.opengis.net/sld/1.2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:se="http://www.opengis.net/se/2.0/core" xmlns:ogc="http://www.opengis.net/fes/2.0" xmlns:sld="http://www.opengis.net/sld/1.2" elementFormDefault="qualified" version="1.2">
 	
 	<xsd:import namespace="http://www.opengis.net/fes/2.0" schemaLocation="../../filter/2.0/filter.xsd"/>
 	<xsd:import namespace="http://www.opengis.net/se/2.0/core" schemaLocation="../../se/2.0/All.xsd"/>

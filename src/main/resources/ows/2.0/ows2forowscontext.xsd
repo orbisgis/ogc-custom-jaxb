@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema version="0.1.0" targetNamespace="http://www.opengis.net/ows" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<xs:schema version="0.1.0" targetNamespace="http://www.opengis.net/ows/2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 	<xs:annotation>
 		<xs:appinfo>ows2forowscontext.xsd 2011/11/16</xs:appinfo>
 		<xs:documentation>

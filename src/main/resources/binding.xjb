@@ -20,6 +20,12 @@
                 </jaxb:schemaBindings>
         </jaxb:bindings>
         
+        <jaxb:bindings schemaLocation="owc/owsContext_0.4.2.xsd" node="/xs:schema">
+                <jaxb:schemaBindings>
+                        <jaxb:package name="net.opengis.ows_context"/>
+                </jaxb:schemaBindings>
+        </jaxb:bindings>
+        
         <jaxb:bindings schemaLocation="sld/1.2/DescribeLayer.xsd" node="/xs:schema">
 
                 <jaxb:schemaBindings>
@@ -45,4 +51,158 @@
                         <jaxb:package name="net.opengis.wms._1_4_0"/>
                 </jaxb:schemaBindings>
         </jaxb:bindings>
+        
+        <jaxb:bindings schemaLocation="gml/3.1.1/base/geometryBasic0d1d.xsd " 
+               node="/xs:schema">
+		<!--jaxb:bindings node="xs:attributeGroup[@name='SRSInformationGroup']">
+				<inheritance:implements>net.opengis.gml.v_3_1_1.SRSInformationGroup</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:attributeGroup[@name='SRSReferenceGroup']">
+				<inheritance:implements>net.opengis.gml.v_3_1_1.SRSReferenceGroup</inheritance:implements>
+		</jaxb:bindings-->
+<!--                <jaxb:bindings node="xs:complexType[@name='AbstractGeometryType']">
+                        <inheritance:implements>net.opengis.gml.v_3_1_1.SRSReferenceGroup</inheritance:implements>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:complexType[@name='DirectPositionType']">
+                        <inheritance:implements>net.opengis.gml.v_3_1_1.SRSReferenceGroup</inheritance:implements>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:complexType[@name='DirectPositionListType']">
+                        <inheritance:implements>net.opengis.gml.v_3_1_1.SRSReferenceGroup</inheritance:implements>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:complexType[@name='VectorType']">
+                        <inheritance:implements>net.opengis.gml.v_3_1_1.SRSReferenceGroup</inheritance:implements>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:complexType[@name='EnvelopeType']">
+                        <inheritance:implements>net.opengis.gml.v_3_1_1.SRSReferenceGroup</inheritance:implements>
+                </jaxb:bindings>-->
+        </jaxb:bindings>
+
+
+
+        <jaxb:bindings schemaLocation="gml/3.1.1/base/gmlBase.xsd" 
+                       node="/xs:schema">
+                <jaxb:bindings node="xs:element[@name='_Object']">
+                        <xjc:dom/>
+                </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings 
+                schemaLocation="gml/3.1.1/base/geometryPrimitives.xsd" 
+                node="/xs:schema">
+                <jaxb:bindings node="xs:element[@name='_Solid']">
+                        <jaxb:class name="ASolidElement"/>
+                </jaxb:bindings>
+        </jaxb:bindings>
+
+
+        <jaxb:bindings 
+                schemaLocation="gml/3.1.1/base/geometryBasic0d1d.xsd" 
+                node="/xs:schema">
+                <jaxb:bindings node="xs:element[@name='_Curve']">
+                        <jaxb:class name="ACurveElement"/>
+                </jaxb:bindings>
+        </jaxb:bindings>
+
+        <jaxb:bindings 
+                schemaLocation="gml/3.1.1/base/geometryBasic2d.xsd " 
+                node="/xs:schema">
+                <jaxb:bindings node="xs:element[@name='_Surface']">
+                        <jaxb:class name="ASurfaceElement"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='_Ring']">
+                        <jaxb:class name="ARingElement"/>
+                </jaxb:bindings>
+        </jaxb:bindings>
+
+
+
+
+        <jaxb:bindings 
+                schemaLocation="gml/3.1.1/base/defaultStyle.xsd" 
+                node="/xs:schema">
+                <jaxb:bindings node="xs:element[@name='graphStyle']">
+                        <jaxb:class name="GraphStylePropertyElement"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='topologyStyle']">
+                        <jaxb:class name="TopologyStylePropertyElement"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='labelStyle']">
+                        <jaxb:class name="LabelStylePropertyElement"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='geometryStyle']">
+                        <jaxb:class name="GeometryStylePropertyElement"/>
+                </jaxb:bindings>
+                <jaxb:bindings node="xs:element[@name='featureStyle']">
+                        <jaxb:class name="FeatureStylePropertyElement"/>
+                </jaxb:bindings>
+
+                <jaxb:bindings node="xs:element[@name='_Style']">
+                        <jaxb:class name="AStyleElement"/>
+                </jaxb:bindings>
+
+
+        </jaxb:bindings>
+
+        <jaxb:bindings schemaLocation="gml/3.1.1/base/coverage.xsd" node="/xs:schema">
+                <jaxb:bindings node="xs:simpleType[@name='IncrementOrder']">
+                        <jaxb:typesafeEnumClass>
+                                <jaxb:typesafeEnumMember name="PLUS_X_PLUS_Y" value="+x+y"/>
+                                <jaxb:typesafeEnumMember name="PLUS_X_MINUS_Y" value="+x-y"/>
+                                <jaxb:typesafeEnumMember name="MINUS_X_PLUS_Y" value="-x+y"/>
+                                <jaxb:typesafeEnumMember name="MINUS_X_MINUS_Y" value="-x-y"/>
+                        </jaxb:typesafeEnumClass>
+                </jaxb:bindings>
+        </jaxb:bindings>
+
+
+<!--        <jaxb:bindings 
+                schemaLocation="gml/3.1.1/base/feature.xsd" 
+                node="/xs:schema">
+                <jaxb:bindings node="xs:element[@name='_FeatureCollection']">
+                        <jaxb:class name="AFeatureCollectionElement"/>
+                </jaxb:bindings>
+        </jaxb:bindings>-->
+
+        <jaxb:bindings 
+                schemaLocation="gml/3.1.1/smil/smil20.xsd" 
+                node="/xs:schema">
+                <jaxb:schemaBindings>
+                        <jaxb:package name="org.w3.smil.v_2_0"/>
+                </jaxb:schemaBindings>
+                <jaxb:bindings node="xs:attributeGroup[@name='structureModuleAttrs']/xs:attribute[@name='class']">
+                        <jaxb:property name="ClassName"/>
+                </jaxb:bindings>
+
+        </jaxb:bindings>
+
+        <jaxb:bindings 
+                schemaLocation="gml/3.1.1/smil/smil20-language.xsd" 
+                node="/xs:schema">
+                <jaxb:schemaBindings>
+                        <jaxb:package name="org.w3.smil.v_2_0.language"/>
+                </jaxb:schemaBindings>
+
+        </jaxb:bindings>
+        
+        <jaxb:bindings schemaLocation="kml/2.2.0/ogckml22.xsd" 
+		node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="net.opengis.kml.v_2_2_0"/>
+		</jaxb:schemaBindings>
+		<jaxb:bindings node="xs:element[@name='Scale']">
+			<jaxb:class name="AScale"/>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:element[@name='snippet']">
+			<jaxb:class name="ASnippet"/>
+		</jaxb:bindings>
+	</jaxb:bindings>
+	<jaxb:bindings schemaLocation="kml/2.2.0/atom-author-link.xsd" 
+		node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="net.opengis.kml.v_2_2_0"/>
+		</jaxb:schemaBindings>
+		<jaxb:bindings node="xs:element[@name='name']">
+			<jaxb:class name="AtomName"/>
+		</jaxb:bindings>
+	</jaxb:bindings>
 </jaxb:bindings>

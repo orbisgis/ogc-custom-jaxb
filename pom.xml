@@ -29,8 +29,8 @@
                                                 <value>sld/*/*.xsd</value>
                                                 <value>wms/*/*.xsd</value>
                                                 <value>filter/*/filter.xsd</value>
-                                                <value>ows/*/owsAll.wsd</value>
-<!--                                                <value>xlink/*/xlink.wsd</value>-->
+                                                <value>ows/*/owsAll.xsd</value>
+                                                <value>owc/*.xsd</value>
                                         </schemaIncludes>
                                 </configuration>
                         </plugin>
