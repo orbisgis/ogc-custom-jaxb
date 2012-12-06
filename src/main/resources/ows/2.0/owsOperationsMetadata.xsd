@@ -3,22 +3,23 @@
         xmlns:ows="http://www.opengis.net/ows/2.0"
         xmlns="http://www.w3.org/2001/XMLSchema"
         elementFormDefault="qualified"
-        version="2.0.0"
+        version="2.0.2"
         xml:lang="en">
   <annotation>
-    <appinfo>owsOperationsMetadata.xsd 2009-09-09</appinfo>
+    <appinfo>owsOperationsMetadata.xsd</appinfo>
     <documentation>This XML Schema Document encodes the basic contents of the
     "OperationsMetadata" section of the GetCapabilities operation response,
     also known as the Capabilities XML document.
 
     OWS is an OGC Standard.
-    Copyright (c) 2009 Open Geospatial Consortium, Inc. All Rights Reserved.
+    Copyright (c) 2009 Open Geospatial Consortium.
     To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
     </documentation>
   </annotation>
   <!-- ==============================================================
                 includes and imports
         ============================================================== -->
+  <include schemaLocation="owsAll.xsd"/>
   <include schemaLocation="owsCommon.xsd" />
   <include schemaLocation="ows19115subset.xsd" />
   <include schemaLocation="owsDomainType.xsd" />
@@ -202,9 +203,9 @@
     <annotation>
       <documentation>Connect point URL and any constraints for this HTTP
       request method for this operation request. In the OnlineResourceType,
-      the xlink:href attribute in the xlink:simpleLink attribute group shall
+      the xlink:href attribute in the xlink:simpleAttrs attribute group shall
       be used to contain this URL. The other attributes in the
-      xlink:simpleLink attribute group should not be used.</documentation>
+      xlink:simpleAttrs attribute group should not be used.</documentation>
     </annotation>
     <complexContent>
       <extension base="ows:OnlineResourceType">

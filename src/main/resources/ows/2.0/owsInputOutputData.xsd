@@ -3,10 +3,10 @@
         xmlns:ows="http://www.opengis.net/ows/2.0"
         xmlns="http://www.w3.org/2001/XMLSchema"
         elementFormDefault="qualified"
-        version="2.0.0"
+        version="2.0.2"
         xml:lang="en">
   <annotation>
-    <appinfo>owsInputOutputData.xsd 2009-09-09</appinfo>
+    <appinfo>owsInputOutputData.xsd</appinfo>
     <documentation>This XML Schema Document specifies types and elements for
     input and output of operation data, allowing including multiple data items
     with each data item either included or referenced. The contents of each
@@ -14,13 +14,14 @@
     use in a specific OWS specification.
 		
     OWS is an OGC Standard.
-    Copyright (c) 2009 Open Geospatial Consortium, Inc. All Rights Reserved.
+    Copyright (c) 2009 Open Geospatial Consortium.
     To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
     </documentation>
   </annotation>
   <!-- ==============================================================
                 includes and imports
         ============================================================== -->
+  <include schemaLocation="owsAll.xsd"/>
   <include schemaLocation="owsManifest.xsd" />
 
   <!-- ==========================================================
@@ -37,7 +38,7 @@
       <documentation>This element is specified for use where the ManifestType
       contents are needed for an operation response, but the Manifest element
       name is not fully applicable. This element or the ManifestType shall be
-      used instead of using the ReferenceType proposed in OGC
+      used instead of using the ows:ReferenceType proposed in OGC
       04-105.</documentation>
     </annotation>
   </element>

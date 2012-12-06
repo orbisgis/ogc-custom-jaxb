@@ -3,10 +3,10 @@
         xmlns:ows="http://www.opengis.net/ows/2.0"
         xmlns="http://www.w3.org/2001/XMLSchema"
         elementFormDefault="qualified"
-        version="2.0.0"
+        version="2.0.2"
         xml:lang="en">
   <annotation>
-    <appinfo>owsGetResourceByID.xsd 2009-09-09</appinfo>
+    <appinfo>owsGetResourceByID.xsd</appinfo>
     <documentation>This XML Schema Document encodes the GetResourceByID
     operation request message. This typical operation is specified as a base
     for profiling in specific OWS specifications. For information on the
@@ -14,13 +14,14 @@
     the OWS Common specification.
     
     OWS is an OGC Standard.
-    Copyright (c) 2009 Open Geospatial Consortium, Inc. All Rights Reserved.
+    Copyright (c) 2009 Open Geospatial Consortium.
     To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
     </documentation>
   </annotation>
   <!-- ==============================================================
                 includes and imports
         ============================================================== -->
+  <include schemaLocation="owsAll.xsd"/>
   <include schemaLocation="owsDataIdentification.xsd" />
   <include schemaLocation="owsGetCapabilities.xsd" />
 
