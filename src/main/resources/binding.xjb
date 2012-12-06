@@ -178,4 +178,28 @@
                         <jaxb:package name="net.opengis.wfs._2_1"/>
                 </jaxb:schemaBindings>
         </jaxb:bindings>
+	<!--XLink needs some bindings : there is an attribute named -->
+	<!--title that is used many times :-( -->
+	<jaxb:bindings schemaLocation="http://www.w3.org/1999/xlink.xsd" node="/xs:schema">
+		<jaxb:bindings node="//xs:attributeGroup[@name='locatorAttrs']">
+			<jaxb:bindings node=".//xs:attribute[@ref='xlink:title']">
+				<jaxb:property name="LocatorAttrsTitle"/>
+			</jaxb:bindings>
+		</jaxb:bindings>
+		<jaxb:bindings node="//xs:group[@name='locatorModel']">
+			<jaxb:bindings node=".//xs:element[@ref='xlink:title']">
+				<jaxb:property name="LocatorModelTitle"/>
+			</jaxb:bindings>
+		</jaxb:bindings>
+		<jaxb:bindings node="//xs:attributeGroup[@name='arcAttrs']">
+			<jaxb:bindings node=".//xs:attribute[@ref='xlink:title']">
+				<jaxb:property name="ArcAttrsTitle"/>
+			</jaxb:bindings>
+		</jaxb:bindings>
+		<jaxb:bindings node="//xs:group[@name='arcModel']">
+			<jaxb:bindings node=".//xs:element[@ref='xlink:title']">
+				<jaxb:property name="ArcModelTitle"/>
+			</jaxb:bindings>
+		</jaxb:bindings>
+	</jaxb:bindings>
 </jaxb:bindings>
