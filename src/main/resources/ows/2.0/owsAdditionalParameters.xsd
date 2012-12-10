@@ -4,7 +4,7 @@
         xmlns="http://www.w3.org/2001/XMLSchema"
         elementFormDefault="qualified"
         version="2.0.2"
-        xml:lang="en">
+	xml:lang="en">
   <annotation>
     <appinfo>owsAdditionalParameters.xsd</appinfo>
     <documentation>This XML Schema Document encodes a new AdditionalParameters
@@ -18,13 +18,13 @@
    OWS is an OGC Standard.
    Copyright (c) 2009 Open Geospatial Consortium.
    To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
-    </documentation>
+   </documentation>
   </annotation>
 
   <!-- ==============================================================
                 includes and imports
         ============================================================== -->
-  <include schemaLocation="owsAll.xsd"/>
+<!--  <include schemaLocation="owsAll.xsd"/>-->
   <include schemaLocation="owsCommon.xsd" />
   <include schemaLocation="ows19115subset.xsd" />
   <include schemaLocation="owsDomainType.xsd" />

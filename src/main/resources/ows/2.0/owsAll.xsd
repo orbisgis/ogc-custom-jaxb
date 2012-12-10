@@ -25,5 +25,5 @@
   <include schemaLocation="owsDomainType.xsd"/>
   <include schemaLocation="owsContents.xsd"/>
   <include schemaLocation="owsInputOutputData.xsd"/>
-  <include schemaLocation="owsAdditionalParameters.xsd"/>
+  <!--<include schemaLocation="owsAdditionalParameters.xsd"/>-->
 </schema>

@@ -96,7 +96,7 @@
 	</complexType>
 	<!-- ============================================================== -->
 	<!-- =========================================================== -->
-	<element name="_FeatureCollection" type="gml:AbstractFeatureCollectionType" abstract="true" substitutionGroup="gml:_Feature"/>
+	<element name="AbstractFeatureCollection" type="gml:AbstractFeatureCollectionType" abstract="true" substitutionGroup="gml:_Feature"/>
 	<!-- ===========================================================   -->
 	<complexType name="AbstractFeatureCollectionType" abstract="true">
 		<annotation>
