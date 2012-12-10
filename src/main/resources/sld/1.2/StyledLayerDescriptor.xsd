@@ -28,10 +28,10 @@
 				<xsd:element ref="se:Name" minOccurs="0"/>
 				<xsd:element ref="se:Description" minOccurs="0"/>
 				<xsd:element ref="sld:UseSLDLibrary" minOccurs="0" maxOccurs="unbounded"/>
-				<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<!--		<xsd:choice minOccurs="0" maxOccurs="unbounded"> -->
 					<xsd:element ref="sld:NamedLayer"/>
-					<xsd:element ref="sld:UserLayer"/>
-				</xsd:choice>
+					<!--					<xsd:element ref="sld:UserLayer"/>
+				</xsd:choice>-->
 			</xsd:sequence>
 			<xsd:attribute name="version" type="se:VersionType" use="required"/>
 		</xsd:complexType>
@@ -77,10 +77,14 @@
 			<xsd:sequence>
 				<xsd:element ref="se:Name"/>
 				<xsd:element ref="se:Description" minOccurs="0"/>
-                                <!-- *** Changed stuff *** -->
-                                <!-- se:AbstractStyle is the new root element of a style in SE 2.0 -->
-				<xsd:element ref="se:AbstractStyle"/>
-                                <!-- *** Changed stuff *** -->
+				<xsd:choice minOccurs="0" maxOccurs="unbounded">
+					<xsd:element ref="sld:NamedStyle"/>
+					<xsd:element ref="sld:UserStyle"/>
+                               		 <!-- *** Changed stuff *** -->
+                        	        <!-- se:AbstractStyle is the new root element of a style in SE 2.0 -->
+					<xsd:element ref="se:AbstractStyle"/>
+        	                        <!-- *** Changed stuff *** -->
+				</xsd:choice>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -97,158 +101,6 @@
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
-	<xsd:element name="UserLayer">
-		<xsd:annotation>
-			<xsd:documentation>
-        A UserLayer allows a user-defined layer to be built from WFS and
-        WCS data.
-      </xsd:documentation>
-		</xsd:annotation>
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="se:Name" minOccurs="0"/>
-				<xsd:element ref="se:Description" minOccurs="0"/>
-				<xsd:choice minOccurs="0">
-					<xsd:element ref="sld:RemoteOWS"/>
-					<xsd:element ref="sld:InlineFeature"/>
-				</xsd:choice>
-				<xsd:choice minOccurs="0">
-					<xsd:element ref="sld:LayerFeatureConstraints"/>
-					<xsd:element ref="sld:LayerCoverageConstraints"/>
-				</xsd:choice>
-				<xsd:element ref="sld:UserStyle" maxOccurs="unbounded"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-	<xsd:element name="RemoteOWS">
-		<xsd:annotation>
-			<xsd:documentation>
-        A RemoteOWS gives a reference to a remote WFS/WCS/other-OWS server. 
-      </xsd:documentation>
-		</xsd:annotation>
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="sld:Service"/>
-				<xsd:element ref="se:OnlineResource"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-	<xsd:element name="Service">
-		<xsd:annotation>
-			<xsd:documentation>
-        A Service refers to the type of a remote OWS server.
-      </xsd:documentation>
-		</xsd:annotation>
-		<xsd:simpleType>
-			<xsd:restriction base="xsd:string">
-				<xsd:enumeration value="WFS"/>
-				<xsd:enumeration value="WCS"/>
-			</xsd:restriction>
-		</xsd:simpleType>
-	</xsd:element>
-	<xsd:element name="InlineFeature">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="gml:FeatureCollection" maxOccurs="unbounded"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-	<xsd:element name="LayerFeatureConstraints">
-		<xsd:annotation>
-			<xsd:documentation>
-        LayerFeatureConstraints define what features &amp; feature types are
-        referenced in a layer.
-      </xsd:documentation>
-		</xsd:annotation>
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="sld:FeatureTypeConstraint" maxOccurs="unbounded"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-	<xsd:element name="FeatureTypeConstraint">
-		<xsd:annotation>
-			<xsd:documentation>
-        A FeatureTypeConstraint identifies a specific feature type and
-        supplies fitlering.
-      </xsd:documentation>
-		</xsd:annotation>
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="se:FeatureTypeName" minOccurs="0"/>
-				<xsd:element ref="ogc:Filter" minOccurs="0"/>
-				<xsd:element ref="sld:Extent" minOccurs="0" maxOccurs="unbounded"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-	<xsd:element name="LayerCoverageConstraints">
-		<xsd:annotation>
-			<xsd:documentation>
-        LayerCoverageConstraints define what coverage offering subsets
-        are referenced in a layer.
-      </xsd:documentation>
-		</xsd:annotation>
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="sld:CoverageConstraint" maxOccurs="unbounded"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-	<xsd:element name="CoverageConstraint">
-		<xsd:annotation>
-			<xsd:documentation>
-          A CoverageConstraint identifies a specific coverage offering
-          and supplies time and range selection.
-      </xsd:documentation>
-		</xsd:annotation>
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="se:CoverageName"/>
-				<xsd:element ref="sld:CoverageExtent" minOccurs="0"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-	<xsd:element name="CoverageExtent">
-		<xsd:annotation>
-			<xsd:documentation>
-        The CoverageExtent describes the time or range selections.
-      </xsd:documentation>
-		</xsd:annotation>
-		<xsd:complexType>
-			<xsd:choice>
-				<xsd:element ref="sld:RangeAxis" minOccurs="0" maxOccurs="unbounded"/>
-				<xsd:element ref="sld:TimePeriod" minOccurs="0"/>
-			</xsd:choice>
-		</xsd:complexType>
-	</xsd:element>
-	<xsd:element name="RangeAxis">
-		<xsd:annotation>
-			<xsd:documentation>
-        A RangeAxis describes the range selection for a coverage.
-      </xsd:documentation>
-		</xsd:annotation>
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="se:Name"/>
-				<xsd:element ref="sld:Value"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-	<xsd:element name="Value" type="xsd:string"/>
-	<xsd:element name="TimePeriod" type="xsd:string"/>
-	<xsd:element name="Extent">
-		<xsd:annotation>
-			<xsd:documentation>
-        An Extent gives feature/coverage/raster/matrix dimension extent. 
-      </xsd:documentation>
-		</xsd:annotation>
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="se:Name"/>
-				<xsd:element ref="sld:Value"/>
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
 	<xsd:element name="UserStyle">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -262,10 +114,14 @@
 				<xsd:element ref="se:Name" minOccurs="0"/>
 				<xsd:element ref="se:Description" minOccurs="0"/>
 				<xsd:element ref="sld:IsDefault" minOccurs="0"/>
-                                <!-- *** Changed stuff *** -->
-                                <!-- se:AbstractStyle is the new root element of a style in SE 2.0 -->
-				<xsd:element ref="se:AbstractStyle"/>
-                                <!-- *** Changed stuff *** -->
+				<xsd:choice maxOccurs="unbounded">
+					<!--<xsd:element ref="se:CoverageStyle"/>-->
+					<xsd:element ref="se:OnlineResource"/>
+                        	        <!-- *** Changed stuff *** -->
+                	                <!-- se:AbstractStyle is the new root element of a style in SE 2.0 -->
+					<xsd:element ref="se:AbstractStyle"/>
+	                                <!-- *** Changed stuff *** -->
+				</xsd:choice>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
