@@ -28,10 +28,10 @@
 				<xsd:element ref="se:Name" minOccurs="0"/>
 				<xsd:element ref="se:Description" minOccurs="0"/>
 				<xsd:element ref="sld:UseSLDLibrary" minOccurs="0" maxOccurs="unbounded"/>
-				<!--		<xsd:choice minOccurs="0" maxOccurs="unbounded"> -->
-					<xsd:element ref="sld:NamedLayer"/>
-					<!--					<xsd:element ref="sld:UserLayer"/>
-				</xsd:choice>-->
+				<!--<xsd:choice minOccurs="0" maxOccurs="unbounded">-->
+					<xsd:element ref="sld:NamedLayer" minOccurs="0" maxOccurs="unbounded"/>
+					<!--	<xsd:element ref="sld:UserLayer"/>-->
+					<!--</xsd:choice>-->
 			</xsd:sequence>
 			<xsd:attribute name="version" type="se:VersionType" use="required"/>
 		</xsd:complexType>
@@ -114,14 +114,14 @@
 				<xsd:element ref="se:Name" minOccurs="0"/>
 				<xsd:element ref="se:Description" minOccurs="0"/>
 				<xsd:element ref="sld:IsDefault" minOccurs="0"/>
-				<xsd:choice maxOccurs="unbounded">
+				<!--<xsd:choice maxOccurs="unbounded">-->
 					<!--<xsd:element ref="se:CoverageStyle"/>-->
-					<xsd:element ref="se:OnlineResource"/>
+					<!--<xsd:element ref="se:OnlineResource"/>-->
                         	        <!-- *** Changed stuff *** -->
                 	                <!-- se:AbstractStyle is the new root element of a style in SE 2.0 -->
-					<xsd:element ref="se:AbstractStyle"/>
+					<xsd:element ref="se:AbstractStyle" maxOccurs="unbounded"/>
 	                                <!-- *** Changed stuff *** -->
-				</xsd:choice>
+				<!--</xsd:choice>-->
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
