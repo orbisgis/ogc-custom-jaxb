@@ -4,10 +4,10 @@
         xmlns="http://www.w3.org/2001/XMLSchema"
         targetNamespace="http://www.opengis.net/ows/2.0"
         elementFormDefault="qualified"
-        version="2.0.0"
+        version="2.0.2"
         xml:lang="en">
   <annotation>
-    <appinfo>owsDataIdentification.xsd 2009-09-09</appinfo>
+    <appinfo>owsDataIdentification.xsd</appinfo>
     <documentation>This XML Schema Document encodes the parts of the
     MD_DataIdentification class of ISO 19115 (OGC Abstract Specification Topic
     11) which are expected to be used for most datasets. This Schema also
@@ -16,7 +16,7 @@
     metadata (Capabilities) documents.
     
     OWS is an OGC Standard.
-    Copyright (c) 2009 Open Geospatial Consortium, Inc. All Rights Reserved.
+    Copyright (c) 2009 Open Geospatial Consortium.
     To obtain additional rights of use, visit http://www.opengeospatial.org/legal/
     </documentation>
   </annotation>
@@ -24,6 +24,7 @@
   <!-- ==============================================================
                 includes and imports
         ============================================================== -->
+  <include schemaLocation="owsAll.xsd"/>
   <include schemaLocation="owsCommon.xsd" />
   <include schemaLocation="ows19115subset.xsd" />
   

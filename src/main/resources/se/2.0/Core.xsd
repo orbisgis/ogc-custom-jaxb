@@ -8,7 +8,7 @@
 
   <xsd:import namespace="http://www.opengis.net/ows/2.0" schemaLocation="../../ows/2.0/owsAll.xsd" />
   <xsd:import namespace="http://www.opengis.net/fes/2.1" schemaLocation="../../filter/2.1/filter.xsd" />
-  <xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd"/>
+  <xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>
 
 
 
@@ -63,7 +63,7 @@
         <xsd:annotation>
           <xsd:documentation>Reference to on-line resource from which data can be obtained.</xsd:documentation>
         </xsd:annotation>
-        <xsd:attributeGroup ref="xlink:simpleLink"/>
+        <xsd:attributeGroup ref="xlink:simpleAttrs"/>
   </xsd:complexType>
 
 

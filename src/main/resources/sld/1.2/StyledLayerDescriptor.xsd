@@ -11,7 +11,7 @@
       		<description>Styled Layer Descriptor version 1.2</description>
 			<copyright>
 				SLD is an OGC Standard.
-				Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+				Copyright (c) 2007,2010 Open Geospatial Consortium.
 				To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 			</copyright>
 		</xsd:documentation>
@@ -20,7 +20,7 @@
 		<xsd:annotation>
 			<xsd:documentation>
         A StyledLayerDescriptor is a sequence of styled layers, represented
-        at the first level by NamedLayer elements.
+        at the first level by NamedLayer and UserLayer elements.
       </xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
@@ -28,9 +28,10 @@
 				<xsd:element ref="se:Name" minOccurs="0"/>
 				<xsd:element ref="se:Description" minOccurs="0"/>
 				<xsd:element ref="sld:UseSLDLibrary" minOccurs="0" maxOccurs="unbounded"/>
-				<xsd:choice minOccurs="0" maxOccurs="unbounded">
-					<xsd:element ref="sld:NamedLayer"/>
-				</xsd:choice>
+				<!--<xsd:choice minOccurs="0" maxOccurs="unbounded">-->
+					<xsd:element ref="sld:NamedLayer" minOccurs="0" maxOccurs="unbounded"/>
+					<!--	<xsd:element ref="sld:UserLayer"/>-->
+					<!--</xsd:choice>-->
 			</xsd:sequence>
 			<xsd:attribute name="version" type="se:VersionType" use="required"/>
 		</xsd:complexType>
@@ -76,10 +77,10 @@
 			<xsd:sequence>
 				<xsd:element ref="se:Name"/>
 				<xsd:element ref="se:Description" minOccurs="0"/>
-                                <!-- *** Changed stuff *** -->
-                                <!-- se:AbstractStyle is the new root element of a style in SE 2.0 -->
-				<xsd:element ref="se:AbstractStyle"/>
-                                <!-- *** Changed stuff *** -->
+				<xsd:choice minOccurs="0" maxOccurs="unbounded">
+					<xsd:element ref="sld:NamedStyle"/>
+					<xsd:element ref="sld:UserStyle"/>
+				</xsd:choice>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
@@ -109,10 +110,14 @@
 				<xsd:element ref="se:Name" minOccurs="0"/>
 				<xsd:element ref="se:Description" minOccurs="0"/>
 				<xsd:element ref="sld:IsDefault" minOccurs="0"/>
-                                <!-- *** Changed stuff *** -->
-                                <!-- se:AbstractStyle is the new root element of a style in SE 2.0 -->
-				<xsd:element ref="se:AbstractStyle"/>
-                                <!-- *** Changed stuff *** -->
+				<!--<xsd:choice maxOccurs="unbounded">-->
+					<!--<xsd:element ref="se:CoverageStyle"/>-->
+					<!--<xsd:element ref="se:OnlineResource"/>-->
+                        	        <!-- *** Changed stuff *** -->
+                	                <!-- se:AbstractStyle is the new root element of a style in SE 2.0 -->
+					<xsd:element ref="se:AbstractStyle" maxOccurs="unbounded"/>
+	                                <!-- *** Changed stuff *** -->
+				<!--</xsd:choice>-->
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>

@@ -4,10 +4,10 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         xmlns="http://www.w3.org/2001/XMLSchema"
         elementFormDefault="qualified"
-        version="2.0.0"
+        version="2.0.2"
         xml:lang="en">
   <annotation>
-    <appinfo>owsContents.xsd 2009-09-09</appinfo>
+    <appinfo>owsContents.xsd</appinfo>
     <documentation>This XML Schema Document encodes the typical Contents
     section of an OWS service metadata (Capabilities) document. This Schema
     can be built upon to define the Contents section for a specific OWS. If
@@ -17,13 +17,14 @@
     the wxsContents.xsd prepared for the specific OWS.
     
     OWS is an OGC Standard.
-    Copyright (c) 2009 Open Geospatial Consortium, Inc. All Rights Reserved.
+    Copyright (c) 2009 Open Geospatial Consortium.
     To obtain additional rights of use, visit http://www.opengeospatial.org/legal/
     </documentation>
   </annotation>
   <!-- ==============================================================
                 includes and imports
         ============================================================== -->
+  <include schemaLocation="owsAll.xsd"/>
   <include schemaLocation="owsDataIdentification.xsd" />
   
   <!-- ==============================================================
