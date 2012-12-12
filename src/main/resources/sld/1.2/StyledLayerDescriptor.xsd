@@ -80,10 +80,6 @@
 				<xsd:choice minOccurs="0" maxOccurs="unbounded">
 					<xsd:element ref="sld:NamedStyle"/>
 					<xsd:element ref="sld:UserStyle"/>
-                               		 <!-- *** Changed stuff *** -->
-                        	        <!-- se:AbstractStyle is the new root element of a style in SE 2.0 -->
-					<xsd:element ref="se:AbstractStyle"/>
-        	                        <!-- *** Changed stuff *** -->
 				</xsd:choice>
 			</xsd:sequence>
 		</xsd:complexType>
