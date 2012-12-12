@@ -32,11 +32,7 @@ Revision: 2001/07/31
 	<!-- ============================================================= 
 	struct.xsd
 	============================================================== -->
-        <!-- *** Changed stuff *** -->
-        <!-- This replaces a local import for xml-mod.xsd ; jaxb doesn't like this local hack or redeclaring
-             xml.xsd, and this seems to work with the true xml.xsd anyway -->
-	<import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd" />
-        <!-- *** Changed stuff *** -->
+	<import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd"/>
 	<attributeGroup name="structureModuleAttrs">
 		<attribute name="id" type="ID" use="optional"/>
 		<attribute name="class" type="string" use="optional"/>

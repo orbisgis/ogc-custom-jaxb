@@ -4,16 +4,17 @@
    xmlns:fes="http://www.opengis.net/fes/2.1"
    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
    elementFormDefault="qualified"
-   version="2.0.0">
+   version="2.0.1">
 
    <xsd:annotation>
       <xsd:documentation>
          Filter Encoding is an OGC Standard.
-         Copyright (c) 2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+         Copyright (c) 2010 Open Geospatial Consortium.
          To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
       </xsd:documentation>
    </xsd:annotation>
    
+   <xsd:include schemaLocation="filterAll.xsd"/>
    <xsd:include schemaLocation="expr.xsd"/>
    <xsd:include schemaLocation="query.xsd"/>
    <xsd:include schemaLocation="filterCapabilities.xsd"/>
