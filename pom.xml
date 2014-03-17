@@ -2,12 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
         <modelVersion>4.0.0</modelVersion>
-        <groupId>org.orbisgis.schemas</groupId>
         <artifactId>ogc-custom</artifactId>
         <name>Custom OGC schemas</name>
-        <version>1.1-SNAPSHOT</version>
-        <packaging>jar</packaging>
+        <version>1.2-SNAPSHOT</version>
+        <packaging>bundle</packaging>
         <url>http://www.orbisgis.org</url>
+        <parent>
+            <groupId>org.orbisgis</groupId>
+            <artifactId>orbisgis-nexus</artifactId>
+            <version>1</version>
+        </parent>
         <distributionManagement>
                 <repository>
                         <id>IRSTV</id>
@@ -17,6 +21,12 @@
         </distributionManagement>
         <build>
                 <plugins>
+                        <plugin>
+                            <groupId>org.apache.felix</groupId>
+                            <artifactId>maven-bundle-plugin</artifactId>
+                            <version>2.3.7</version>
+                            <extensions>true</extensions>
+                        </plugin>
                         <plugin>
                                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                                 <artifactId>maven-jaxb2-plugin</artifactId>
@@ -50,12 +60,5 @@
                                 </configuration>
                         </plugin>
                 </plugins>
-                <extensions>
-                        <extension>
-                                <groupId>org.apache.maven.wagon</groupId>
-                                <artifactId>wagon-ssh</artifactId>
-                                <version>2.2</version>
-                        </extension>
-                </extensions>
         </build>
 </project>
