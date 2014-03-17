@@ -12,13 +12,6 @@
             <artifactId>orbisgis-nexus</artifactId>
             <version>1</version>
         </parent>
-        <distributionManagement>
-                <repository>
-                        <id>IRSTV</id>
-                        <name>IRSTV repository</name>
-                        <url>scp://irstv@repo.orbisgis.org:/var/www/repo.orbisgis.org</url>
-                </repository>
-        </distributionManagement>
         <build>
                 <plugins>
                         <plugin>
