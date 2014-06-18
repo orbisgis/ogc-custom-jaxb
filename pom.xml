@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
         <modelVersion>4.0.0</modelVersion>
         <artifactId>ogc-custom</artifactId>
         <name>Custom OGC schemas</name>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.3-SNAPSHOT</version>
         <packaging>bundle</packaging>
         <url>http://www.orbisgis.org</url>
+        <description>A maven artifact with some custom OGC XML Schemas and the JAXB classes that come with them.</description>
         <parent>
             <groupId>org.orbisgis</groupId>
             <artifactId>orbisgis-nexus</artifactId>
             <version>1</version>
         </parent>
+        <organization>
+            <name>IRSTV CNRS-FR-2488</name>
+            <url>http://www.irstv.fr/</url>
+        </organization>
+        <licenses>
+            <license>
+                <name>GNU General Public License (GPLV3+)</name>
+                <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+            </license>
+        </licenses>
+        <scm>
+            <connection>scm:git:https://github.com/irstv/ogc-custom-jaxb.git</connection>
+            <developerConnection>scm:git:https://github.com/irstv/ogc-custom-jaxb.git</developerConnection>
+            <url>git@github.com:irstv/ogc-custom-jaxb.git</url>
+        </scm>
         <build>
                 <plugins>
                         <plugin>
