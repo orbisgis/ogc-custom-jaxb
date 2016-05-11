@@ -55,6 +55,7 @@
                                                 <value>filter/*/filter.xsd</value>
                                                 <value>ows/*/owsAll.xsd</value>
                                                 <value>owc/*.xsd</value>
+                                                <value>wps/*/*.xsd</value>
                                         </schemaIncludes>
                                 </configuration>
                         </plugin>
