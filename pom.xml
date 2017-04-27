@@ -50,12 +50,13 @@
                                         <extension>true</extension>
                                         <episode>true</episode>
                                         <schemaIncludes>
-                                                <value>se/*/All.xsd</value>
-                                                <value>sld/*/*.xsd</value>
-                                                <value>filter/*/filter.xsd</value>
-                                                <value>ows/*/owsAll.xsd</value>
+                                                <value>se/2.0/All.xsd</value>
+                                                <value>sld/1.2/*.xsd</value>
+                                                <value>filter/2.1/filter.xsd</value>
+                                                <value>filter/2.2/filterAll.xsd</value>
+                                                <value>ows/2.0/owsAll.xsd</value>
                                                 <value>owc/*.xsd</value>
-                                                <value>wps/*/*.xsd</value>
+                                                <value>wps/2.0/*.xsd</value>
                                         </schemaIncludes>
                                 </configuration>
                         </plugin>
