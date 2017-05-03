@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+        <modelVersion>4.0.0</modelVersion>
+        <artifactId>ogc-custom-model</artifactId>
+        <name>Custom OGC schemas</name>
+        <version>1.3-SNAPSHOT</version>
+        <packaging>bundle</packaging>
+        <url>http://www.orbisgis.org</url>
+        <description>A maven artifact with some custom OGC XML Schemas and the JAXB classes that come with them.</description>
+        <parent>
+            <groupId>org.orbisgis</groupId>
+            <artifactId>ogc-custom</artifactId>
+            <version>1.3-SNAPSHOT</version>
+        </parent>
+        <organization>
+            <name>Lab-STICC - UMR CNRS 6285</name>
+            <url>http://www.labsticc.fr/</url>
+        </organization>
+        <licenses>
+            <license>
+                <name>GNU General Public License (GPLV3+)</name>
+                <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+            </license>
+        </licenses>
+        <build>
+                <plugins>
+                        <plugin>
+                            <groupId>org.apache.felix</groupId>
+                            <artifactId>maven-bundle-plugin</artifactId>
+                            <version>${maven-bundle-plugin-version}</version>
+                            <extensions>true</extensions>
+                        </plugin>
+                        <plugin>
+                                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                                <artifactId>maven-jaxb2-plugin</artifactId>
+                                <version>${maven-jaxb2-plugin-version}</version>
+                                <executions>
+                                        <execution>
+                                                <goals>
+                                                        <goal>generate</goal>
+                                                </goals>
+                                        </execution>
+                                </executions>
+                                <configuration>
+                                        <extension>true</extension>
+                                        <episode>true</episode>
+                                        <schemaIncludes>
+                                                <value>se/2.0/All.xsd</value>
+                                                <value>sld/1.2/*.xsd</value>
+                                                <value>filter/2.1/filter.xsd</value>
+                                                <value>filter/2.2/filterAll.xsd</value>
+                                                <value>ows/2.0/owsAll.xsd</value>
+                                                <value>owc/*.xsd</value>
+                                                <value>wps/2.0/*.xsd</value>
+                                        </schemaIncludes>
+                                </configuration>
+                        </plugin>
+                        <plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-compiler-plugin</artifactId>
+                                <version>${maven-compiler-plugin-version}</version>
+                                <configuration>
+                                        <source>1.6</source>
+                                        <target>1.6</target>
+                                </configuration>
+                        </plugin>
+                </plugins>
+        </build>
+</project>
