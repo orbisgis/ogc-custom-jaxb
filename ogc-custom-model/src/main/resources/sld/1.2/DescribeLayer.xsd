@@ -32,10 +32,12 @@
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:complexType name="TypeNameType">
-                <!-- *** Changed stuff *** -->
+		<!-- *** Changed stuff *** -->
+		<xsd:sequence>
                 <!-- se:DataTypeName is the new name of a data type name is SE 2.0 -->
                 <xsd:element ref="se:DataTypeName"/>
-                <!-- *** Changed stuff *** -->
+		</xsd:sequence>
+		<!-- *** Changed stuff *** -->
 	</xsd:complexType>
 	<xsd:simpleType name="owsTypeType">
 		<xsd:restriction base="xsd:string">
