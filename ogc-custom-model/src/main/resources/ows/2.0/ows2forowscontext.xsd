@@ -9,8 +9,8 @@
 		Copyright (c) 2008 OpenGIS, All Rights Reserved.</xs:documentation>
 	</xs:annotation>
 	
-	<xs:include schemaLocation="./owsCommon.xsd"/>
-	<xs:include schemaLocation="./owsServiceProvider.xsd"/>
-	<xs:include schemaLocation="./owsDataIdentification.xsd"/>
-	<xs:include schemaLocation="./ows19115subset.xsd"/>
+	<xs:include schemaLocation="owsCommon.xsd"/>
+	<xs:include schemaLocation="owsServiceProvider.xsd"/>
+	<xs:include schemaLocation="owsDataIdentification.xsd"/>
+	<xs:include schemaLocation="ows19115subset.xsd"/>
 </xs:schema>

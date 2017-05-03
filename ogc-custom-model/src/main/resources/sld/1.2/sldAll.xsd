@@ -15,8 +15,8 @@
         </documentation>
     </annotation>
     
-    <include schemaLocation="./DescribeLayer.xsd"/>
-    <include schemaLocation="./GetMap.xsd"/>
-    <include schemaLocation="./sld_capabilities.xsd"/> 
+    <include schemaLocation="DescribeLayer.xsd"/>
+    <include schemaLocation="GetMap.xsd"/>
+    <include schemaLocation="sld_capabilities.xsd"/>
     
 </schema>
