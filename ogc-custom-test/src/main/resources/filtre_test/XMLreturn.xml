@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns18:Filter xmlns:ns2="http://www.w3.org/1999/xlink" xmlns:ns3="http://www.opengis.net/ows/2.0" xmlns:ns4="http://www.opengis.net/wps/2.0" xmlns:ns5="http://www.opengis.net/ows-context" xmlns:ns6="http://www.opengis.net/se/2.0/core" xmlns:ns7="http://www.opengis.net/fes/2.1" xmlns:ns8="http://www.opengis.net/gml" xmlns:ns9="http://www.opengis.net/kml/2.2" xmlns:ns10="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0" xmlns:ns11="http://www.w3.org/2005/Atom" xmlns:ns12="http://www.opengis.net/sld/1.2" xmlns:ns13="http://www.opengis.net/se/2.0/thematic" xmlns:ns14="http://www.opengis.net/wfs/2.1" xmlns:ns15="http://www.w3.org/2001/SMIL20/" xmlns:ns16="http://www.opengis.net/wms" xmlns:ns17="http://www.opengis.net/se/2.0/raster" xmlns:ns18="http://www.opengis.net/fes/2.0" xmlns:ns19="http://www.opengis.net/ows/1.1" xmlns:ns20="http://www.w3.org/2001/SMIL20/Language">
+    <ns18:PropertyIsEqualTo>
+        <ns18:ValueReference>SomeProperty</ns18:ValueReference>
+        <ns18:Literal>100</ns18:Literal>
+    </ns18:PropertyIsEqualTo>
+</ns18:Filter>

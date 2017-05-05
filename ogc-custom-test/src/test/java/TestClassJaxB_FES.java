@@ -10,8 +10,6 @@ import javax.xml.namespace.QName;
 import java.io.*;
 import java.util.ArrayList;
 
-import org.apache.commons.io.FileUtils;
-
 /**
  * Created by quillien on 02/05/2017.
  * Test of generate class on .xsd about Filter Encoding Standard
@@ -54,6 +52,7 @@ public class TestClassJaxB_FES {
         Marshaller marshaller = JaxbContainer.JAXBCONTEXT.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
+        //the xml file od the list in directory:resources/filtre_test
         for (File filterXML : listFile ) {
             XMLInitial = filterXML;
             addTagXML();
@@ -190,7 +189,8 @@ public class TestClassJaxB_FES {
                 }
                 if(subString.indexOf("ResourceIdentifier")!=-1){
                     //for the test filter19, error of space name : fes and ns18
-                    //ResourceIdentifier name="fes:ResourceId"/
+                    //ResourceIdentifier name="fes:ResourceId"/ against
+                    //ResourceIdentifier name="ns18:ResourceId"
                     subString = (subString.split(" "))[0]+" name=\"fes:ResourceId\"/";
 
                 }
