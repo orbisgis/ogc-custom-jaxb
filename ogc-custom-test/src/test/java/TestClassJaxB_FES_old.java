@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class TestClassJaxB_FES {
     private static final int NUMBER_FILTER = 27;
     private ArrayList<File> listFile;
+    private ArrayList<String> listXMLTag;
     private File XMLInitial;
     private File XMLReturn;
 
@@ -38,7 +39,7 @@ public class TestClassJaxB_FES {
 
 
     /**
-     * Test Round-tripping
+     * Test Round-tripping :
      * @throws JAXBException
      * @throws IOException
      */
@@ -54,10 +55,13 @@ public class TestClassJaxB_FES {
         //the xml file od the list in directory:resources/filtre_test
         for (File filterXML : listFile ) {
             XMLInitial = filterXML;
+            addTagXML();
             Object ob = unmarshaller.unmarshal(filterXML);
 
             marshaller.marshal(ob,new File("src\\main\\resources\\filtre_test\\XMLreturn.xml"));
             XMLReturn = new File("src\\main\\resources\\filtre_test\\XMLreturn.xml");
+
+            Assert.assertEquals(parseXMLReturn(), 0);
 
             listXMLTag.clear();
         }
@@ -75,19 +79,7 @@ public class TestClassJaxB_FES {
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         Unmarshaller unmarshaller = JaxbContainer.JAXBCONTEXT.createUnmarshaller();
 
-        /**
-         * filtre 1
-         * < ?xml version="1.0"?>
-         * <fes:Filter
-         * xmlns:fes="http://www.opengis.net/fes/2.0"
-         * xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         * xsi:schemaLocation="http://www.opengis.net/fes/2.0 http://schemas.opengis.net/filter/2.0/filterAll.xsd">
-         * <fes:PropertyIsEqualTo>
-         * <fes:ValueReference>SomeProperty</fes:ValueReference>
-         * <fes:Literal>100</fes:Literal>
-         * </fes:PropertyIsEqualTo>
-         * </fes:Filter>
-         */
+        //filtre 1
         FilterType filter = objFactory.createFilterType();
         BinaryComparisonOpType valueBinary = objFactory.createBinaryComparisonOpType();
         JAXBElement<String> vRef = objFactory.createValueReference("SomeProperty");
@@ -107,19 +99,7 @@ public class TestClassJaxB_FES {
         Object ob = unmarshaller.unmarshal(XMLReturn);
         Assert.assertEquals(ob,eleFilter);
 
-        /**
-         * filtre 2
-         * < ?xml version="1.0"?>
-         * <fes:Filter
-         * xmlns:fes="http://www.opengis.net/fes/2.0"
-         * xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         * xsi:schemaLocation="http://www.opengis.net/fes/2.0 http://schemas.opengis.net/filter/2.0/filterAll.xsd">
-         * <fes:PropertyIsLessThan>
-         *    <fes:ValueReference>DEPTH</fes:ValueReference>
-         *          <fes:Literal>30</fes:Literal>
-         *    </fes:PropertyIsLessThan>
-         * </fes:Filter>
-         */
+        //filtre 2
         filter = objFactory.createFilterType();
         valueBinary = objFactory.createBinaryComparisonOpType();
         vRef = objFactory.createValueReference("DEPTH");
@@ -138,12 +118,101 @@ public class TestClassJaxB_FES {
         XMLReturn = new File("src\\main\\resources\\filtre_test\\XMLreturn.xml");
         displayFile(XMLReturn);
         ob = unmarshaller.unmarshal(XMLReturn);
-        Assert.assertEquals(ob,eleFilter);
-
-
 
     }
 
+
+    /**
+     *
+     */
+    public void addTagXML(){
+        try{
+            InputStream flux=new FileInputStream(XMLInitial);
+            InputStreamReader lecture=new InputStreamReader(flux);
+            BufferedReader buff=new BufferedReader(lecture);
+            String line;
+            while ((line=buff.readLine())!=null ) {
+                    line = line.trim();
+                    if (line.startsWith("<fes")) {
+                        int beginning = line.indexOf(":");
+                        int end = line.indexOf(">");
+                        if((beginning!=(-1)) && (end!=(-1)) ) {
+                            listXMLTag.add(line.substring(beginning+1, end));
+                        }
+                    }
+            }
+            buff.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    /**
+     *@return  nbTag number of tag remaining
+     */
+    public int parseXMLReturn(){
+        int nbTag = listXMLTag.size();
+        try{
+            //read the filter
+            InputStream flux = new FileInputStream(XMLReturn);
+            InputStreamReader lecture =new InputStreamReader(flux);
+            BufferedReader buff = new BufferedReader(lecture);
+
+            String line;
+            String subString = "";
+
+            while ((line=buff.readLine())!=null ) {
+                String tmp = "";
+                line = line.trim();//delete the space
+                if (line.startsWith("<ns")) {
+                    //select the tag in the line
+                    int beginning = line.indexOf(":");
+                    int end = line.indexOf(">");
+                    if((beginning!=(-1)) && (end!=(-1)) ) {
+                        subString = line.substring(beginning + 1, end);
+                    }
+                }
+                if(subString.indexOf("xmlns")!=-1){
+                    //for the test filter19, error of space name : gml
+                    //the gml name sapce is add in the line
+                    //obligate to remove the name space from substring
+                    String[] tagWithoutXmlns = subString.split(" ");
+                    if(tagWithoutXmlns.length>2){
+                        subString = tagWithoutXmlns[0]+" "+tagWithoutXmlns[2];
+                    }
+                    else{
+                        subString = tagWithoutXmlns[0];
+                    }
+                }
+                if(subString.indexOf("ResourceIdentifier")!=-1){
+                    //for the test filter19, error of space name : fes and ns18
+                    //ResourceIdentifier name="fes:ResourceId"/ against
+                    //ResourceIdentifier name="ns18:ResourceId"
+                    subString = (subString.split(" "))[0]+" name=\"fes:ResourceId\"/";
+
+                }
+                for(String tag : listXMLTag){
+
+                    if(subString.equals(tag)) {
+
+
+                        if(!(tmp.equals(tag))) nbTag = nbTag - 1;
+                        tmp = tag;
+                    }
+                }
+                //remove the tag from the list
+                if(tmp!=""){
+                    listXMLTag.remove(tmp);
+                }
+
+            }
+            buff.close();
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return nbTag ;
+    }
 
     public void displayFile(File file){
         try{
