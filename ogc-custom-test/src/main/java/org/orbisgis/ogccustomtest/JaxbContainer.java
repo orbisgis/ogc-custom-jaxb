@@ -34,6 +34,7 @@
  * or contact directly:
  * info_at_ orbisgis.org
  */
+package org.orbisgis.ogccustomtest;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 
