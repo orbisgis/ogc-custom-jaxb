@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<fes:AbstractAdhocQueryExpression typeNames="someName" aliases="name"
-                             xmlns:fes="http://www.opengis.net/fes/2.0"
-                             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                             xsi:schemaLocation="http://www.opengis.net/fes/2.0 http://schemas.opengis.net/filter/2.0/filterAll.xsd">
-    <fes:AbstractProjectionClause>
-
-    </fes:AbstractProjectionClause>
-</fes:AbstractAdhocQueryExpression>

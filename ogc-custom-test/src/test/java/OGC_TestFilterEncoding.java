@@ -1,11 +1,11 @@
 
-import net.opengis.fes._2_0_2.ObjectFactory;
+import net.opengis.fes._2_0_2.*;
 import org.junit.*;
 
 import javax.xml.bind.*;
 import javax.xml.stream.XMLStreamReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.List;
 
 /**
  * Created by quillien on 05/05/2017.
@@ -15,6 +15,7 @@ public class OGC_TestFilterEncoding {
 
     Unmarshaller unmarshaller;
     Marshaller marshaller;
+    ObjectFactory objFactory;
 
 
     @Before
@@ -22,26 +23,7 @@ public class OGC_TestFilterEncoding {
         unmarshaller = JaxbContainer.JAXBCONTEXT.createUnmarshaller();
         marshaller = JaxbContainer.JAXBCONTEXT.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-    }
-    
-    
-
-
-    @Test
-    public void TestQuery() throws JAXBException {
-        InputStream xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_query.mxl");
-        JAXBElement object = unmarshaller.unmarshal((XMLStreamReader) xml, ObjectFactory.class);
-        System.out.println(object.getName());
-        Assert.assertEquals(object.getName(), "AbstractQueryExpression");
-    }
-
-    @Test
-    public void TestAdHocQuery() throws JAXBException {
-        InputStream xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_adhoc_query.mxl");
-        JAXBElement object = unmarshaller.unmarshal((XMLStreamReader) xml, ObjectFactory.class);
-
-        Assert.assertEquals(object.getName(), "AbstractQueryExpression");
+        objFactory = new ObjectFactory();
 
     }
 
@@ -108,5 +90,18 @@ public class OGC_TestFilterEncoding {
 
     }
 
-
+    public void displayFileXML(InputStream flux ){
+        try{
+            InputStreamReader lecture=new InputStreamReader(flux);
+            BufferedReader buff=new BufferedReader(lecture);
+            String line;
+            while ((line=buff.readLine())!=null ) {
+                System.out.println(line);
+            }
+            buff.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
