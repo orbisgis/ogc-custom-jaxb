@@ -50,11 +50,6 @@ public class JaxbContainer {
     static {
         try {
             JAXBCONTEXT = JAXBContext.newInstance(
-                    net.opengis.wps._2_0.ObjectFactory.class,
-                    net.opengis.wms.ObjectFactory.class,
-                    net.opengis.ows._2.ObjectFactory.class,
-                    net.opengis.se._2_0.core.ObjectFactory.class,
-                    oasis.names.tc.ciq.xsdschema.xal._2.ObjectFactory.class,
                     net.opengis.fes._2_0_2.ObjectFactory.class);
         } catch (JAXBException ex) {
             throw new ExceptionInInitializerError(ex);
