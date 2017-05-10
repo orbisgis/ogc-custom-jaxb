@@ -7,16 +7,22 @@ import javax.xml.bind.*;
 import java.io.*;
 
 /**
- * Created by quillien on 05/05/2017.
- * Test of generate class on .xsd about Filter Encoding Standard
+ * This class test the Filter Encoding class generate in ogc-custom-model
+ *
+ * @author Vincent QUILLIEN
  */
 public class OGC_TestFilterEncoding {
 
-    Unmarshaller unmarshaller;
-    Marshaller marshaller;
-    ObjectFactory objFactory;
 
+    Unmarshaller unmarshaller;//Object for the process of deserializing XML data into newly created Java content trees.
+    Marshaller marshaller;//Object for the process of serializing Java content trees back into XML data.
+    ObjectFactory objFactory;//Object used for the creation of class from net.opengis.fes._2_0_2.* .
+    InputStream xml;////Object used for save the data from a file of resources.
 
+    /**
+     * Initialised the attributes from the class
+     * @throws JAXBException
+     */
     @Before
     public void initialize() throws JAXBException{
         unmarshaller = org.orbisgis.ogccustomtest.JaxbContainer.JAXBCONTEXT.createUnmarshaller();
@@ -24,13 +30,17 @@ public class OGC_TestFilterEncoding {
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         objFactory = new ObjectFactory();
 
+
     }
 
 
-
+    /**
+     * Test of the operator type Resource Identification defined in the FES
+     * @throws JAXBException
+     */
     @Test
     public void TestResourceIdentification() throws JAXBException {
-        InputStream xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_RessourceID.xml");
+        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_RessourceID.xml");
         JAXBElement ridElement = (JAXBElement) unmarshaller.unmarshal(xml);
         ResourceIdType rid = (ResourceIdType) ridElement.getValue();
 
@@ -38,11 +48,30 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals(rid.getRid(), "001");
     }
 
+    /**
+     * Test of the type Function defined in the FES
+     * @throws JAXBException
+     */
+    @Test
+    public void TestFonction() throws JAXBException {
+        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_function.xml");
+        JAXBElement functionElement = (JAXBElement) unmarshaller.unmarshal(xml);
+        FunctionType function = (FunctionType) functionElement.getValue();
+
+        Assert.assertEquals(functionElement.getName().getLocalPart(), "Function");
+        Assert.assertEquals(function.getExpression().size(), 3);
+    }
+
+
+    /**
+     * Test of the type Filter defined in the FES and a part of operator used in the filter
+     * @throws JAXBException
+     */
     @Test
     public void TestMinimumStandardFilter() throws JAXBException {
 
         //test PropertyIsEqualTo
-        InputStream xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_PropertyIsEqualTo.xml");
+        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_PropertyIsEqualTo.xml");
         JAXBElement EqualElement = (JAXBElement) unmarshaller.unmarshal(xml);
         FilterType comparisonOps = (FilterType) EqualElement.getValue();
 
@@ -109,59 +138,130 @@ public class OGC_TestFilterEncoding {
 
     }
 
+
+    /**
+     * Test of the type Filter defined in the FES and a second part of operator used in the filter
+     * @throws JAXBException
+     */
     @Test
-    public void TestStandardFilter(){
+    public void TestStandardFilter() throws JAXBException {
+
+        //test PropertyIsNull
+        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_PropertyIsNull.xml");
+        JAXBElement isNullElement = (JAXBElement) unmarshaller.unmarshal(xml);
+        FilterType comparisonOps = (FilterType) isNullElement.getValue();
+
+        JAXBElement<PropertyIsNullType> isNull = (JAXBElement<PropertyIsNullType>) comparisonOps.getComparisonOps();
+
+        Assert.assertEquals(isNullElement.getName().getLocalPart(), "Filter");
+        Assert.assertEquals(isNull.getName().getLocalPart(), "PropertyIsNull");
+
+        //test PropertyIsNil
+        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_PropertyIsNil.xml");
+        JAXBElement isNilElement = (JAXBElement) unmarshaller.unmarshal(xml);
+        comparisonOps = (FilterType) isNilElement.getValue();
+
+        JAXBElement<PropertyIsNullType> isNil = (JAXBElement<PropertyIsNullType>) comparisonOps.getComparisonOps();
+
+        Assert.assertEquals(isNilElement.getName().getLocalPart(), "Filter");
+        Assert.assertEquals(isNil.getName().getLocalPart(), "PropertyIsNil");
+
+
+        //test PropertyIsLike
+        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_PropertyIsLike.xml");
+        JAXBElement isLikeElement = (JAXBElement) unmarshaller.unmarshal(xml);
+        comparisonOps = (FilterType) isLikeElement.getValue();
+
+        JAXBElement<PropertyIsNullType> isLike = (JAXBElement<PropertyIsNullType>) comparisonOps.getComparisonOps();
+
+        Assert.assertEquals(isLikeElement.getName().getLocalPart(), "Filter");
+        Assert.assertEquals(isLike.getName().getLocalPart(), "PropertyIsLike");
+
+
+        //test PropertyIsBetween
+        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_PropertyIsNil.xml");
+        JAXBElement isBetweenElement = (JAXBElement) unmarshaller.unmarshal(xml);
+        comparisonOps = (FilterType) isBetweenElement.getValue();
+
+        JAXBElement<PropertyIsNullType> isBetween = (JAXBElement<PropertyIsNullType>) comparisonOps.getComparisonOps();
+
+        Assert.assertEquals(isBetweenElement.getName().getLocalPart(), "Filter");
+        Assert.assertEquals(isBetween.getName().getLocalPart(), "PropertyIsBetween");
 
     }
 
+
+    /**
+     * Test of the type Bounding-BOX defined in the FES
+     * @throws JAXBException
+     */
     @Test
     public void TestMinimumSpatialFilter(){
-
+        //To be implemented
     }
 
+
+    /**
+     * Test of the type Bounding-BOX defined in the FES and others spatial operators
+     * @throws JAXBException
+     */
     @Test
     public void TestSpatialFilter(){
-
+        //To be implemented
     }
 
+
+    /**
+     * Test of the During operator defined in the FES
+     * @throws JAXBException
+     */
     @Test
     public void TestMinimumTemporalFilter(){
-
+        //To be implemented
     }
 
 
+    /**
+     * Test of the During operator defined in the FES and others spatial operators
+     * @throws JAXBException
+     */
     @Test
     public void TestTemporalFilter(){
-
+        //To be implemented
     }
 
-
+    /**
+     * Test of the type ResourceId operator defined in the FES with the parameters : version, startTime, endTime.
+     * @throws JAXBException
+     */
     @Test
     public void TestVersionNavigation(){
-
+        //To be implemented
     }
 
 
+    /**
+     * Test of the type Filter defined in the FES and the operator of sorting.
+     * @throws JAXBException
+     */
     @Test
     public void TestSorting(){
-
+        //To be implemented
     }
 
+
+    /**
+     * Test of the additional operators not defined in The FES.
+     * @throws JAXBException
+     */
     @Test
     public void TestExtendedOperators(){
-
+        //To be implemented
     }
 
-    @Test
-    public void TestMinimumXPath(){
-
-    }
-
-    @Test
-    public void TestSchemaElementFunction(){
-
-    }
-
+    /**
+     * Display a xml file
+     */
     public void displayFileXML(InputStream flux ){
         try{
             InputStreamReader lecture=new InputStreamReader(flux);

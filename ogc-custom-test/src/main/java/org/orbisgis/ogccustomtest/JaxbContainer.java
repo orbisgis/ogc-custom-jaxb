@@ -41,7 +41,7 @@ import javax.xml.bind.JAXBException;
 /**
  * Container class with the JAXB contexts
  *
- * @author Sylvain PALOMINOS
+ * @author Vincent QUILLIEN
  */
 public class JaxbContainer {
     //Make the JaxbContainer constructor private to avoid its instantiation.
