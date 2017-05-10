@@ -7,7 +7,8 @@ import javax.xml.bind.*;
 import java.io.*;
 
 /**
- * This class test the Filter Encoding class generate in ogc-custom-model
+ * This class tests the Filter Encoding class generated in ogc-custom-model
+ * and follows the requirements of the OGC Standard.
  *
  * @author Vincent QUILLIEN
  */
@@ -251,7 +252,7 @@ public class OGC_TestFilterEncoding {
 
 
     /**
-     * Test of the additional operators not defined in The FES.
+     * Test of the additional operators not defined in the FES.
      * @throws JAXBException
      */
     @Test
