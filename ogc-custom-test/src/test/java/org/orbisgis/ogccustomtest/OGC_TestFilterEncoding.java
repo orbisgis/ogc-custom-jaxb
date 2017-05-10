@@ -14,11 +14,18 @@ import java.io.*;
  */
 public class OGC_TestFilterEncoding {
 
+    /**Object for the process of deserializing XML data into newly created Java content trees.*/
+    Unmarshaller unmarshaller;
 
-    Unmarshaller unmarshaller;//Object for the process of deserializing XML data into newly created Java content trees.
-    Marshaller marshaller;//Object for the process of serializing Java content trees back into XML data.
-    ObjectFactory objFactory;//Object used for the creation of class from net.opengis.fes._2_0_2.* .
-    InputStream xml;////Object used for save the data from a file of resources.
+    /**Object for the process of serializing Java content trees back into XML data.*/
+    Marshaller marshaller;
+
+    /**Object used for the creation of class from net.opengis.fes._2_0_2.* .*/
+    ObjectFactory objFactory;
+
+    /**Object used for save the data from a file of resources.*/
+    InputStream xml;
+
 
     /**
      * Initialised the attributes from the class
@@ -30,8 +37,6 @@ public class OGC_TestFilterEncoding {
         marshaller = org.orbisgis.ogccustomtest.JaxbContainer.JAXBCONTEXT.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         objFactory = new ObjectFactory();
-
-
     }
 
 
@@ -199,6 +204,7 @@ public class OGC_TestFilterEncoding {
     @Test
     public void TestMinimumSpatialFilter(){
         //To be implemented
+
     }
 
 
