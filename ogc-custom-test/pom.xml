@@ -21,6 +21,10 @@
                 <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
             </license>
         </licenses>
+        <properties>
+            <junit-version>4.10</junit-version>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        </properties>
         <build>
                 <plugins>
                         <plugin>
@@ -28,10 +32,23 @@
                                 <artifactId>maven-compiler-plugin</artifactId>
                                 <version>${maven-compiler-plugin-version}</version>
                                 <configuration>
-                                        <source>1.6</source>
-                                        <target>1.6</target>
+                                        <source>1.7</source>
+                                        <target>1.7</target>
                                 </configuration>
                         </plugin>
                 </plugins>
         </build>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit-version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.orbisgis</groupId>
+                <artifactId>ogc-custom-model</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
 </project>
