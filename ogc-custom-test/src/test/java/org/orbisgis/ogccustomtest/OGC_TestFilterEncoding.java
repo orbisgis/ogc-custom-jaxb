@@ -5,6 +5,9 @@ import org.junit.*;
 
 import javax.xml.bind.*;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
+import org.orbisgis.ogccustomtest.file_Extention.*;
 
 /**
  * This class tests the Filter Encoding class generated in ogc-custom-model
@@ -65,7 +68,7 @@ public class OGC_TestFilterEncoding {
         FunctionType function = (FunctionType) functionElement.getValue();
 
         Assert.assertEquals("Error : the input file isn't a function",functionElement.getName().getLocalPart(), "Function");
-        Assert.assertEquals("Error : the filter doesn't have the operator  ",function.getExpression().size(), 3);
+        Assert.assertEquals("Error : the filter doesn't have the good number of expressions  ",function.getExpression().size(), 3);
     }
 
 
@@ -84,7 +87,7 @@ public class OGC_TestFilterEncoding {
         JAXBElement<BinaryComparisonOpType> Equal = (JAXBElement<BinaryComparisonOpType>) comparisonOps.getComparisonOps();
 
         Assert.assertEquals("Error : the input file isn't a Filter",EqualElement.getName().getLocalPart(), "Filter");
-        Assert.assertEquals("Error : the filter doesn't have the operator  ",Equal.getName().getLocalPart(), "PropertyIsEqualTo");
+        Assert.assertEquals("Error : the filter doesn't have the operator PropertyIsEqualTo ",Equal.getName().getLocalPart(), "PropertyIsEqualTo");
 
 
         //test PropertyIsNotEqualTo
@@ -95,7 +98,7 @@ public class OGC_TestFilterEncoding {
         JAXBElement<BinaryComparisonOpType> notEqual = (JAXBElement<BinaryComparisonOpType>) comparisonOps.getComparisonOps();
 
         Assert.assertEquals("Error : the input file isn't a Filter",notEqualElement.getName().getLocalPart(), "Filter");
-        Assert.assertEquals("Error : the filter doesn't have the operator  ",notEqual.getName().getLocalPart(), "PropertyIsNotEqualTo");
+        Assert.assertEquals("Error : the filter doesn't have the operator PropertyIsNotEqualTo",notEqual.getName().getLocalPart(), "PropertyIsNotEqualTo");
 
 
         //test PropertyIsLessThan
@@ -106,7 +109,7 @@ public class OGC_TestFilterEncoding {
         JAXBElement<BinaryComparisonOpType> isless = (JAXBElement<BinaryComparisonOpType>) comparisonOps.getComparisonOps();
 
         Assert.assertEquals("Error : the input file isn't a Filter",isLessElement.getName().getLocalPart(), "Filter");
-        Assert.assertEquals("Error : the filter doesn't have the operator  ",isless.getName().getLocalPart(), "PropertyIsLessThan");
+        Assert.assertEquals("Error : the filter doesn't have the operator PropertyIsLessThan ",isless.getName().getLocalPart(), "PropertyIsLessThan");
 
 
         //test PropertyIsGreaterThan
@@ -117,7 +120,7 @@ public class OGC_TestFilterEncoding {
         JAXBElement<BinaryComparisonOpType> isGreater = (JAXBElement<BinaryComparisonOpType>) comparisonOps.getComparisonOps();
 
         Assert.assertEquals("Error : the input file isn't a Filter",isGreaterElement.getName().getLocalPart(), "Filter");
-        Assert.assertEquals("Error : the filter doesn't have the operator  ",isGreater.getName().getLocalPart(), "PropertyIsGreaterThan");
+        Assert.assertEquals("Error : the filter doesn't have the operator PropertyIsGreaterThan ",isGreater.getName().getLocalPart(), "PropertyIsGreaterThan");
 
 
         //test PropertyIsGreaterThanOrEqualTo
@@ -128,7 +131,7 @@ public class OGC_TestFilterEncoding {
         JAXBElement<BinaryComparisonOpType> isGreaterOr = (JAXBElement<BinaryComparisonOpType>) comparisonOps.getComparisonOps();
 
         Assert.assertEquals("Error : the input file isn't a Filter",isGreaterOrElement.getName().getLocalPart(), "Filter");
-        Assert.assertEquals("Error : the filter doesn't have the operator  ",isGreaterOr.getName().getLocalPart(), "PropertyIsGreaterThanOrEqualTo");
+        Assert.assertEquals("Error : the filter doesn't have the operator PropertyIsGreaterThanOrEqualTo ",isGreaterOr.getName().getLocalPart(), "PropertyIsGreaterThanOrEqualTo");
 
         //test PropertyIsLessThanOrEqualTo
         xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_PropertyIsLessThanOrEqualTo.xml");
@@ -139,8 +142,6 @@ public class OGC_TestFilterEncoding {
 
         Assert.assertEquals("Error : the input file isn't a Filter",isGreaterOrElement.getName().getLocalPart(), "Filter");
         Assert.assertEquals("Error : the filter doesn't have the operator PropertyIsLessThanOrEqualTo ",isLessOr.getName().getLocalPart(), "PropertyIsLessThanOrEqualTo");
-
-
 
     }
 
@@ -251,7 +252,7 @@ public class OGC_TestFilterEncoding {
         JAXBElement<BBOXType> equals = (JAXBElement<BBOXType>) comparisonOps.getSpatialOps();
 
         Assert.assertEquals("Error : the input file isn't a Filter", equalsElement.getName().getLocalPart(), "Filter");
-        Assert.assertEquals("Error : the filter doesn't have the operator Beyond ", equals.getName().getLocalPart(), "Equals");
+        Assert.assertEquals("Error : the filter doesn't have the operator Equals ", equals.getName().getLocalPart(), "Equals");
 
         //test Disjoint
         xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Disjoint.xml");
@@ -295,14 +296,14 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator Overlaps ", overlaps.getName().getLocalPart(), "Overlaps");
 
         //test Crosses
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Overlaps.xml");
+        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Crosses.xml");
         JAXBElement CrossesElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) CrossesElement.getValue();
 
         JAXBElement<BBOXType> crosses = (JAXBElement<BBOXType>) comparisonOps.getSpatialOps();
 
         Assert.assertEquals("Error : the input file isn't a Filter", CrossesElement.getName().getLocalPart(), "Filter");
-        Assert.assertEquals("Error : the filter doesn't have the operator Overlaps ", crosses.getName().getLocalPart(), "Overlaps");
+        Assert.assertEquals("Error : the filter doesn't have the operator Crosses ", crosses.getName().getLocalPart(), "Crosses");
 
     }
 
@@ -431,7 +432,7 @@ public class OGC_TestFilterEncoding {
         JAXBElement<TemporalOpsType> overlapedBy = (JAXBElement<TemporalOpsType>) comparisonOps.getTemporalOps();
 
         Assert.assertEquals("Error : the input file isn't a Filter",overlappedByElement.getName().getLocalPart(), "Filter");
-        Assert.assertEquals("Error : the filter doesn't have the operator Overlaps ",overlapedBy.getName().getLocalPart(), "OverlappedBy");
+        Assert.assertEquals("Error : the filter doesn't have the operator OverlappedBy ",overlapedBy.getName().getLocalPart(), "OverlappedBy");
 
         //test MetBy
         xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_MetBy.xml");
@@ -462,6 +463,23 @@ public class OGC_TestFilterEncoding {
     @Test
     public void TestVersionNavigation() throws JAXBException {
 
+        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_VersionNavig.xml");
+        JAXBElement ridElement = (JAXBElement) unmarshaller.unmarshal(xml);
+        ResourceIdType rid = (ResourceIdType) ridElement.getValue();
+
+        GregorianCalendar startDate = (rid.getStartDate()).toGregorianCalendar();
+        GregorianCalendar endDate = (rid.getEndDate()).toGregorianCalendar();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        formatter.setTimeZone(startDate.getTimeZone());
+        formatter.setTimeZone(endDate.getTimeZone());
+
+
+        Assert.assertEquals("Error : the input file isn't a ResourceId",ridElement.getName().getLocalPart(), "ResourceId");
+        Assert.assertEquals("Error : the filter doesn't have the operator Resource Identification ",rid.getRid(), "001");
+        Assert.assertEquals("",rid.getVersion(), "ALL");
+        Assert.assertEquals("",formatter.format(startDate.getTime()), "11/05/2017");
+        Assert.assertEquals("",formatter.format(endDate.getTime()), "12/05/2017");
+
     }
 
 
@@ -470,8 +488,17 @@ public class OGC_TestFilterEncoding {
      * @throws JAXBException
      */
     @Test
-    public void TestSorting(){
-        //To be implemented
+    public void TestSorting() throws JAXBException {
+        //test SortBy
+        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Sorting.xml");
+        JAXBElement sortByElement = (JAXBElement) unmarshaller.unmarshal(xml);
+        SortByType sortBy= (SortByType) sortByElement.getValue();
+
+        Assert.assertEquals("Error : the input file isn't a Filter",sortByElement.getName().getLocalPart(), "SortBy");
+        Assert.assertEquals("Error : the filter doesn't have the same valueReference ",
+                sortBy.getSortProperty().get(0).getValueReference(), "depth");
+        Assert.assertEquals("Error : the filter doesn't have the same valueReference ",
+                sortBy.getSortProperty().get(1).getValueReference(), "temperature");
     }
 
 
@@ -480,8 +507,13 @@ public class OGC_TestFilterEncoding {
      * @throws JAXBException
      */
     @Test
-    public void TestExtendedOperators(){
-        //To be implemented
+    public void TestExtendedOperators() throws JAXBException {
+        //test New Operator
+        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Sorting.xml");
+        JAXBElement myOpsElement = (JAXBElement) unmarshaller.unmarshal(xml);
+        SortByType  myOps= (SortByType) myOpsElement.getValue();
+
+
     }
 
 }
