@@ -7,7 +7,6 @@ import javax.xml.bind.*;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
-import org.orbisgis.ogccustomtest.file_Extention.*;
 
 /**
  * This class tests the Filter Encoding class generated in ogc-custom-model
@@ -494,7 +493,7 @@ public class OGC_TestFilterEncoding {
         JAXBElement sortByElement = (JAXBElement) unmarshaller.unmarshal(xml);
         SortByType sortBy= (SortByType) sortByElement.getValue();
 
-        Assert.assertEquals("Error : the input file isn't a Filter",sortByElement.getName().getLocalPart(), "SortBy");
+        Assert.assertEquals("Error : the input file isn't a SortBy filter ",sortByElement.getName().getLocalPart(), "SortBy");
         Assert.assertEquals("Error : the filter doesn't have the same valueReference ",
                 sortBy.getSortProperty().get(0).getValueReference(), "depth");
         Assert.assertEquals("Error : the filter doesn't have the same valueReference ",
@@ -509,11 +508,35 @@ public class OGC_TestFilterEncoding {
     @Test
     public void TestExtendedOperators() throws JAXBException {
         //test New Operator
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Sorting.xml");
-        JAXBElement myOpsElement = (JAXBElement) unmarshaller.unmarshal(xml);
-        SortByType  myOps= (SortByType) myOpsElement.getValue();
 
+        JAXBContext jaxbContext = JAXBContext.newInstance(net.opengis.fes._2_0_2.ObjectFactory.class,org.orbisgis.ogccustomtest.ObjectFactory.class);
+        Unmarshaller m = jaxbContext.createUnmarshaller();
+        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_NewOperator.xml");
+        Object myOpsElement = m.unmarshal(xml);
+        File xmlMarshal = new File("src\\test\\resources\\org\\orbisgis\\ogccustomtest\\Xml_Return.xml");
+        marshaller.marshal(myOpsElement,xmlMarshal );
 
+        displayFile(xmlMarshal);
+
+        //Assert.assertEquals("Error : the input file isn't a Filter",myOpsElement.getName().getLocalPart(), "Filter");
+        //Assert.assertEquals("Error : the filter doesn't have the operator PropertyExists ",newProperty , "PropertyExists");
+
+    }
+
+    public void displayFile(File file){
+        try{
+            InputStream flux=new FileInputStream(file);
+            InputStreamReader lecture=new InputStreamReader(flux);
+            BufferedReader buff=new BufferedReader(lecture);
+            String line;
+            while ((line=buff.readLine())!=null ) {
+                System.out.println(line);
+            }
+            buff.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

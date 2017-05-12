@@ -52,6 +52,7 @@ public class JaxbContainer {
         try {
             JAXBCONTEXT = JAXBContext.newInstance(
                     net.opengis.fes._2_0_2.ObjectFactory.class);
+                    //org.orbisgis.ogccustomtest.ObjectFactory.class);
         } catch (JAXBException ex) {
             throw new ExceptionInInitializerError(ex);
         }

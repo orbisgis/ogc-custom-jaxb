@@ -1,12 +1,12 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
+// Ce fichier a ï¿½tï¿½ gï¿½nï¿½rï¿½ par l'implï¿½mentation de rï¿½fï¿½rence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2017.05.11 à 04:54:08 PM CEST 
+// Toute modification apportï¿½e ï¿½ ce fichier sera perdue lors de la recompilation du schï¿½ma source. 
+// Gï¿½nï¿½rï¿½ le : 2017.05.11 ï¿½ 04:54:08 PM CEST 
 //
 
 
-package net.opengis.fes._2_0_2.expr;
+package org.orbisgis.ogccustomtest;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -18,7 +18,7 @@ import net.opengis.fes._2.ComparisonOpsType;
 /**
  * <p>Classe Java pour PropertyExistsType complex type.
  * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
+ * <p>Le fragment de schï¿½ma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
  * &lt;complexType name="PropertyExistsType">
@@ -46,7 +46,7 @@ public class PropertyExistsType
     protected String valueReference;
 
     /**
-     * Obtient la valeur de la propriété valueReference.
+     * Obtient la valeur de la propriï¿½tï¿½ valueReference.
      * 
      * @return
      *     possible object is
@@ -58,7 +58,7 @@ public class PropertyExistsType
     }
 
     /**
-     * Définit la valeur de la propriété valueReference.
+     * Dï¿½finit la valeur de la propriï¿½tï¿½ valueReference.
      * 
      * @param value
      *     allowed object is
