@@ -481,7 +481,6 @@ public class OGC_TestFilterEncoding {
 
     }
 
-
     /**
      * Test of the type Filter defined in the FES and the operator of sorting.
      * @throws JAXBException
@@ -500,43 +499,5 @@ public class OGC_TestFilterEncoding {
                 sortBy.getSortProperty().get(1).getValueReference(), "temperature");
     }
 
-
-    /**
-     * Test of the additional operators not defined in the FES.
-     * @throws JAXBException
-     */
-    @Test
-    public void TestExtendedOperators() throws JAXBException {
-        //test New Operator
-
-        JAXBContext jaxbContext = JAXBContext.newInstance(net.opengis.fes._2_0_2.ObjectFactory.class,org.orbisgis.ogccustomtest.ObjectFactory.class);
-        Unmarshaller m = jaxbContext.createUnmarshaller();
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_NewOperator.xml");
-        Object myOpsElement = m.unmarshal(xml);
-        File xmlMarshal = new File("src\\test\\resources\\org\\orbisgis\\ogccustomtest\\Xml_Return.xml");
-        marshaller.marshal(myOpsElement,xmlMarshal );
-
-        displayFile(xmlMarshal);
-
-        //Assert.assertEquals("Error : the input file isn't a Filter",myOpsElement.getName().getLocalPart(), "Filter");
-        //Assert.assertEquals("Error : the filter doesn't have the operator PropertyExists ",newProperty , "PropertyExists");
-
-    }
-
-    public void displayFile(File file){
-        try{
-            InputStream flux=new FileInputStream(file);
-            InputStreamReader lecture=new InputStreamReader(flux);
-            BufferedReader buff=new BufferedReader(lecture);
-            String line;
-            while ((line=buff.readLine())!=null ) {
-                System.out.println(line);
-            }
-            buff.close();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
 }
