@@ -499,5 +499,4 @@ public class OGC_FilterEncodingTest {
                 sortBy.getSortProperty().get(1).getValueReference(), "temperature");
     }
 
-
 }
