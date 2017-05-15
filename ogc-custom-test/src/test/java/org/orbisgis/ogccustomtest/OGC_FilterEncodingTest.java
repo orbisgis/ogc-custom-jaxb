@@ -14,7 +14,7 @@ import java.util.GregorianCalendar;
  *
  * @author Vincent QUILLIEN
  */
-public class OGC_TestFilterEncoding {
+public class OGC_FilterEncodingTest {
 
     /**Object for the process of deserializing XML data into newly created Java content trees.*/
     Unmarshaller unmarshaller;
@@ -48,7 +48,7 @@ public class OGC_TestFilterEncoding {
      */
     @Test
     public void TestResourceIdentification() throws JAXBException {
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_ResourceID.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_ResourceID.xml");
         JAXBElement ridElement = (JAXBElement) unmarshaller.unmarshal(xml);
         ResourceIdType rid = (ResourceIdType) ridElement.getValue();
 
@@ -62,7 +62,7 @@ public class OGC_TestFilterEncoding {
      */
     @Test
     public void TestFonction() throws JAXBException {
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Function.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_Function.xml");
         JAXBElement functionElement = (JAXBElement) unmarshaller.unmarshal(xml);
         FunctionType function = (FunctionType) functionElement.getValue();
 
@@ -79,7 +79,7 @@ public class OGC_TestFilterEncoding {
     public void TestMinimumStandardFilter() throws JAXBException {
 
         //test PropertyIsEqualTo
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_PropertyIsEqualTo.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_PropertyIsEqualTo.xml");
         JAXBElement EqualElement = (JAXBElement) unmarshaller.unmarshal(xml);
         FilterType comparisonOps = (FilterType) EqualElement.getValue();
 
@@ -90,7 +90,7 @@ public class OGC_TestFilterEncoding {
 
 
         //test PropertyIsNotEqualTo
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_PropertyIsNotEqualTo.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_PropertyIsNotEqualTo.xml");
         JAXBElement notEqualElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) notEqualElement.getValue();
 
@@ -101,7 +101,7 @@ public class OGC_TestFilterEncoding {
 
 
         //test PropertyIsLessThan
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_PropertyIsLessThan.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_PropertyIsLessThan.xml");
         JAXBElement isLessElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) isLessElement.getValue();
 
@@ -112,7 +112,7 @@ public class OGC_TestFilterEncoding {
 
 
         //test PropertyIsGreaterThan
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_PropertyIsGreaterThan.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_PropertyIsGreaterThan.xml");
         JAXBElement isGreaterElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) isGreaterElement.getValue();
 
@@ -123,7 +123,7 @@ public class OGC_TestFilterEncoding {
 
 
         //test PropertyIsGreaterThanOrEqualTo
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_PropertyIsGreaterThanOrEqualTo.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_PropertyIsGreaterThanOrEqualTo.xml");
         JAXBElement isGreaterOrElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) isGreaterOrElement.getValue();
 
@@ -133,7 +133,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator PropertyIsGreaterThanOrEqualTo ",isGreaterOr.getName().getLocalPart(), "PropertyIsGreaterThanOrEqualTo");
 
         //test PropertyIsLessThanOrEqualTo
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_PropertyIsLessThanOrEqualTo.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_PropertyIsLessThanOrEqualTo.xml");
         JAXBElement isLessOrElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) isLessOrElement.getValue();
 
@@ -153,7 +153,7 @@ public class OGC_TestFilterEncoding {
     public void TestStandardFilter() throws JAXBException {
 
         //test PropertyIsNull
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_PropertyIsNull.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_PropertyIsNull.xml");
         JAXBElement isNullElement = (JAXBElement) unmarshaller.unmarshal(xml);
         FilterType comparisonOps = (FilterType) isNullElement.getValue();
 
@@ -163,7 +163,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator PropertyIsNull ",isNull.getName().getLocalPart(), "PropertyIsNull");
 
         //test PropertyIsNil
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_PropertyIsNil.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_PropertyIsNil.xml");
         JAXBElement isNilElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) isNilElement.getValue();
 
@@ -174,7 +174,7 @@ public class OGC_TestFilterEncoding {
 
 
         //test PropertyIsLike
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_PropertyIsLike.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_PropertyIsLike.xml");
         JAXBElement isLikeElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) isLikeElement.getValue();
 
@@ -185,7 +185,7 @@ public class OGC_TestFilterEncoding {
 
 
         //test PropertyIsBetween
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_PropertyIsBetween.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_PropertyIsBetween.xml");
         JAXBElement isBetweenElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) isBetweenElement.getValue();
 
@@ -204,7 +204,7 @@ public class OGC_TestFilterEncoding {
     @Test
     public void TestMinimumSpatialFilter() throws JAXBException {
         //test BBOX
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_BBOX.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_BBOX.xml");
         JAXBElement bBoxElement = (JAXBElement) unmarshaller.unmarshal(xml);
         FilterType comparisonOps = (FilterType) bBoxElement.getValue();
 
@@ -223,7 +223,7 @@ public class OGC_TestFilterEncoding {
     public void TestSpatialFilter() throws JAXBException {
 
         //test DWithIn
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_DWithIn.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_DWithIn.xml");
         JAXBElement dWithInElement = (JAXBElement) unmarshaller.unmarshal(xml);
         FilterType comparisonOps = (FilterType) dWithInElement.getValue();
 
@@ -233,7 +233,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator DWithin ",dWithIn.getName().getLocalPart(), "DWithin");
 
         //test Beyond
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Beyond.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_Beyond.xml");
         JAXBElement beyondElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) beyondElement.getValue();
 
@@ -244,7 +244,7 @@ public class OGC_TestFilterEncoding {
 
 
         //test Equals
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Equals.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_Equals.xml");
         JAXBElement equalsElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) equalsElement.getValue();
 
@@ -254,7 +254,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator Equals ", equals.getName().getLocalPart(), "Equals");
 
         //test Disjoint
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Disjoint.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_Disjoint.xml");
         JAXBElement disjointElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) disjointElement.getValue();
 
@@ -264,7 +264,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator Disjoint ", disjoint.getName().getLocalPart(), "Disjoint");
 
         //test Touches
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Touches.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_Touches.xml");
         JAXBElement touchesElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) touchesElement.getValue();
 
@@ -275,7 +275,7 @@ public class OGC_TestFilterEncoding {
 
 
         //test Within
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Within.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_Within.xml");
         JAXBElement withinElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) withinElement.getValue();
 
@@ -285,7 +285,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator Within ", within.getName().getLocalPart(), "Within");
 
         //test Overlaps
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Overlaps.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_Overlaps.xml");
         JAXBElement overlapsElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) overlapsElement.getValue();
 
@@ -295,7 +295,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator Overlaps ", overlaps.getName().getLocalPart(), "Overlaps");
 
         //test Crosses
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Crosses.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_Crosses.xml");
         JAXBElement CrossesElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) CrossesElement.getValue();
 
@@ -315,7 +315,7 @@ public class OGC_TestFilterEncoding {
     public void TestMinimumTemporalFilter() throws JAXBException {
 
         //test During
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_During.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_During.xml");
         JAXBElement duringElement = (JAXBElement) unmarshaller.unmarshal(xml);
         FilterType comparisonOps = (FilterType) duringElement.getValue();
 
@@ -334,7 +334,7 @@ public class OGC_TestFilterEncoding {
     public void TestTemporalFilter() throws JAXBException {
 
         //test TEquals
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_TEquals.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_TEquals.xml");
         JAXBElement tEqualsElement = (JAXBElement) unmarshaller.unmarshal(xml);
         FilterType comparisonOps = (FilterType) tEqualsElement.getValue();
 
@@ -344,7 +344,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator TEquals ",tEquals.getName().getLocalPart(), "TEquals");
 
         //test TContains
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_TContains.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_TContains.xml");
         JAXBElement tContainsElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) tContainsElement.getValue();
 
@@ -354,7 +354,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator TContains ",tContains.getName().getLocalPart(), "TContains");
 
         //test TOverlaps
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_TOverlaps.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_TOverlaps.xml");
         JAXBElement tOverlapsElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) tOverlapsElement.getValue();
 
@@ -364,7 +364,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator TOverlaps ",tOverlaps.getName().getLocalPart(), "TOverlaps");
 
         //test After
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_After.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_After.xml");
         JAXBElement afterElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) afterElement.getValue();
 
@@ -374,7 +374,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator After ",after.getName().getLocalPart(), "After");
 
         //test Before
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Before.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_Before.xml");
         JAXBElement beforeElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) beforeElement.getValue();
 
@@ -384,7 +384,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator Before ",before.getName().getLocalPart(), "Before");
 
         //test Begins
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Begins.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_Begins.xml");
         JAXBElement beginsElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) beginsElement.getValue();
 
@@ -394,7 +394,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator Begins ",begins.getName().getLocalPart(), "Begins");
 
         //test AnyInteracts
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_AnyInteracts.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_AnyInteracts.xml");
         JAXBElement anyInteractsElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) anyInteractsElement.getValue();
 
@@ -404,7 +404,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator AnyInteracts ",anyInteracts.getName().getLocalPart(), "AnyInteracts");
 
         //test Meets
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Meets.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_Meets.xml");
         JAXBElement meetsElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) meetsElement.getValue();
 
@@ -414,7 +414,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator Meets ",meets.getName().getLocalPart(), "Meets");
 
         //test BegunBy
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_BegunBy.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_BegunBy.xml");
         JAXBElement begunByElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) begunByElement.getValue();
 
@@ -424,7 +424,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator BegunBy ",begunBy.getName().getLocalPart(), "BegunBy");
 
         //test OverlappedBy
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_OverlappedBy.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_OverlappedBy.xml");
         JAXBElement overlappedByElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) overlappedByElement.getValue();
 
@@ -434,7 +434,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator OverlappedBy ",overlapedBy.getName().getLocalPart(), "OverlappedBy");
 
         //test MetBy
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_MetBy.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_MetBy.xml");
         JAXBElement metByElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) metByElement.getValue();
 
@@ -444,7 +444,7 @@ public class OGC_TestFilterEncoding {
         Assert.assertEquals("Error : the filter doesn't have the operator MetBy ",metBy.getName().getLocalPart(), "MetBy");
 
         //test EndedBy
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_EndedBy.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_EndedBy.xml");
         JAXBElement endedByElement = (JAXBElement) unmarshaller.unmarshal(xml);
         comparisonOps = (FilterType) endedByElement.getValue();
 
@@ -462,7 +462,7 @@ public class OGC_TestFilterEncoding {
     @Test
     public void TestVersionNavigation() throws JAXBException {
 
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_VersionNavig.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_VersionNavig.xml");
         JAXBElement ridElement = (JAXBElement) unmarshaller.unmarshal(xml);
         ResourceIdType rid = (ResourceIdType) ridElement.getValue();
 
@@ -488,7 +488,7 @@ public class OGC_TestFilterEncoding {
     @Test
     public void TestSorting() throws JAXBException {
         //test SortBy
-        xml = OGC_TestFilterEncoding.class.getResourceAsStream("filter_Sorting.xml");
+        xml = OGC_FilterEncodingTest.class.getResourceAsStream("filter_Sorting.xml");
         JAXBElement sortByElement = (JAXBElement) unmarshaller.unmarshal(xml);
         SortByType sortBy= (SortByType) sortByElement.getValue();
 
