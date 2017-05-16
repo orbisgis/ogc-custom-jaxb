@@ -1,12 +1,12 @@
 //
-// Ce fichier a �t� g�n�r� par l'impl�mentation de r�f�rence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802 
-// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Toute modification apport�e � ce fichier sera perdue lors de la recompilation du sch�ma source. 
-// G�n�r� le : 2017.05.15 � 03:12:35 PM CEST 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.8-b130911.1802
+// Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a>
+// Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source.
+// Généré le : 2017.05.15 à 03:12:35 PM CEST
 //
 
 
-package net.opengis.fes._2_0_2.newOps;
+package org.orbisgis.ogccustomtest.newoperator;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;

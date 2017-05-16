@@ -35,6 +35,9 @@
  * info_at_ orbisgis.org
  */
 package org.orbisgis.ogccustomtest;
+
+import org.orbisgis.ogccustomtest.newoperator.ObjectFactory;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 
@@ -55,7 +58,7 @@ public class JaxbContainer {
                     net.opengis.se._2_0.core.ObjectFactory.class,
                     oasis.names.tc.ciq.xsdschema.xal._2.ObjectFactory.class,
                     net.opengis.fes._2_0_2.ObjectFactory.class,
-                    net.opengis.fes._2_0_2.newOps.ObjectFactory.class);
+                    ObjectFactory.class);
         } catch (JAXBException ex) {
             throw new ExceptionInInitializerError(ex);
         }
