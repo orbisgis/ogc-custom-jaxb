@@ -13,7 +13,6 @@
  * 
  * OrbisGIS is distributed under GPL 3 license.
  *
- * Copyright (C) 2007-2014 CNRS (IRSTV FR CNRS 2488)
  * Copyright (C) 2015-2017 CNRS (Lab-STICC UMR CNRS 6285)
  *
  * This file is part of OrbisGIS.
@@ -34,6 +33,7 @@
  * or contact directly:
  * info_at_ orbisgis.org
  */
+
 package org.orbisgis.ogccustomtest;
 
 import org.orbisgis.ogccustomtest.newoperator.ObjectFactory;
