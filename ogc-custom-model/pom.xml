@@ -52,6 +52,7 @@
                                                 <value>ows/2.0/owsAll.xsd</value>
                                                 <value>owc/*.xsd</value>
                                                 <value>wps/2.0/*.xsd</value>
+                                                <value>wps/1.0.0/*.xsd</value>
                                         </schemaIncludes>
                                 </configuration>
                         </plugin>
