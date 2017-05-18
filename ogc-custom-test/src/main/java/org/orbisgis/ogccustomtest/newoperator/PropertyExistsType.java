@@ -45,10 +45,10 @@ import net.opengis.fes._2_0_2.ExtensionOpsType;
 
 
 /**
- * <p>Classe Java pour PropertyExistsType complex type.
- * 
- * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
- * 
+ * <p>Java class for PropertyExistsType complex type.
+ *
+ * <p>the fragment of schema indicates the expected contents appearing in this class.
+ *
  * <pre>
  * &lt;complexType name="PropertyExistsType">
  *   &lt;complexContent>
@@ -75,7 +75,7 @@ public class PropertyExistsType
     protected String valueReference;
 
     /**
-     * Obtient la valeur de la propriété valueReference.
+     * Gets the value of the property valueReference.
      * 
      * @return
      *     possible object is
@@ -87,7 +87,7 @@ public class PropertyExistsType
     }
 
     /**
-     * Définit la valeur de la propriété valueReference.
+     * Defines the value of the property valueReference.
      * 
      * @param value
      *     allowed object is
