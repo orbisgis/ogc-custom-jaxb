@@ -204,7 +204,18 @@
         </jaxb:bindings>
     </jaxb:bindings>
 
-    <!-- Bindings for WPS 2.1 -->
+    <!-- Bindings for WPS 1.0.0 -->
+    <!-- They depend on these local schemas:
+            - filter/2.1/filter.xsd
+            - ows/2.0/owsAll.xsd
+    -->
+    <jaxb:bindings schemaLocation="wps/1.0.0/wpsAll.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="net.opengis.wps._1_0_0"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <!-- Bindings for WPS 2.0 -->
     <!-- They depend on these local schemas:
             - filter/2.1/filter.xsd
             - ows/2.0/owsAll.xsd
