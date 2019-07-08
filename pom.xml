@@ -9,8 +9,8 @@
         <description>A maven artifact with some custom OGC XML Schemas, the JAXB classes and the test that come with them .</description>
         <parent>
             <groupId>org.orbisgis</groupId>
-            <artifactId>orbisgis-nexus</artifactId>
-            <version>2</version>
+            <artifactId>orbisparent</artifactId>
+            <version>1.0.3-SNAPSHOT</version>
         </parent>
         <organization>
             <name>Lab-STICC - UMR CNRS 6285</name>
@@ -44,4 +44,27 @@
             <maven-jaxb2-plugin-version>0.8.2</maven-jaxb2-plugin-version>
             <commons-io-version>2.4</commons-io-version>
         </properties>
+
+    <repositories>
+        <repository>
+            <id>orbisgis-release</id>
+            <url>http://nexus-ng.orbisgis.org/repository/orbisgis-release</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>orbisgis-snapshot</id>
+            <url>http://nexus-ng.orbisgis.org/repository/orbisgis-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
 </project>
